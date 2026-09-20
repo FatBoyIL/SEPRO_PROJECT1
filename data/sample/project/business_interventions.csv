@@ -1,0 +1,3 @@
+﻿intervention_id,effective_date,project,intervention_name,description,target_kpis,measurement_note
+INT01,2026-03-01,Project 1,Marketing targeting and channel reallocation,Shift paid budget toward higher-intent Google Search while reducing low-quality Meta spend and strengthening SEO landing pages.,CPL; Qualified Lead Rate; Revenue per Lead,Pre/post with same-length windows; control for seasonality where possible.
+INT02,2026-04-15,Project 1,Sales first-response SLA,Set first response target at <=12 hours with daily lead follow-up queue.,Median First Response Hours; Lead-to-Quote; Lead-to-Order,Compare response buckets and pre/post SLA; avoid claiming pure causality.

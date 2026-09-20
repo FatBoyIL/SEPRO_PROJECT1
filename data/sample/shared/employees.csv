@@ -1,0 +1,11 @@
+﻿employee_id,employee_name,department_id,job_title,hire_date,termination_date
+E001,Mai Anh,D01,Marketing Executive,2024-05-06,
+E002,Ngoc Tran,D01,Digital Marketing Executive,2025-02-10,
+E101,Linh Pham,D02,Sales Executive,2023-08-14,
+E102,Thao Nguyen,D02,Sales Executive,2024-01-08,
+E103,Minh Le,D02,Sales Executive,2025-03-03,
+E201,Trang Vo,D04,Purchasing Executive,2023-11-20,
+E301,Khanh Bui,D05,Warehouse Coordinator,2024-06-17,
+E401,Duy Hoang,D06,Logistics Coordinator,2024-09-09,
+E501,Vy Do,D07,AR/AP Accountant,2023-07-24,
+E601,Hanh Truong,D08,Customer Service Executive,2024-02-19,

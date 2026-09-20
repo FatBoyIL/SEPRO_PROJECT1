@@ -1,0 +1,11 @@
+﻿section,content
+Project Name,B2B Lead-to-Order Analytics
+Core Business Problem,"Marketing generates inquiries, but management cannot tell which sources create revenue-quality demand or where leads are lost before becoming orders."
+Primary Stakeholders,Marketing Manager; Sales Manager; General Manager
+Primary Question,Where are we losing qualified demand before it becomes revenue?
+Analytical Focus,Lead quality; funnel leakage; first-response SLA; revenue attribution; channel efficiency
+Showcase Analysis,First response time buckets vs Lead-to-Quote and Lead-to-Order conversion
+Decision Trade-off,Low CPL vs high lead quality and revenue per lead
+Measure Impact,Marketing optimization from 2026-03-01 and Sales SLA from 2026-04-15
+Recommended Dashboard Pages,Executive Funnel; Channel Quality; Sales Response SLA; Product/Customer Mix; Intervention Impact
+Portfolio Positioning,Functional/commercial analytics project.

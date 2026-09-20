@@ -1,0 +1,16 @@
+﻿campaign_id,campaign_name,channel,start_date,end_date,objective,planned_daily_budget_vnd
+MC001,Google Ads - Cleanroom Chemicals 1,Google Ads,2025-01-01,2026-07-03,Product Demand,1200000
+MC002,Google Ads - Corporate 2,Google Ads,2025-03-29,2026-08-31,Brand,1200000
+MC003,Google Ads - Retargeting 3,Google Ads,2025-04-13,2026-07-03,Brand,150000
+MC004,Organic Search - Corporate 1,Organic Search,2025-01-01,2026-08-31,Retention,0
+MC005,Organic Search - Wipers 2,Organic Search,2025-02-27,2026-03-04,Brand,0
+MC006,Organic Search - Filters 3,Organic Search,2025-01-24,2026-08-31,Lead Generation,0
+MC007,Facebook Ads - Wipers 1,Facebook Ads,2025-01-01,2026-08-31,Product Demand,800000
+MC008,Facebook Ads - Retargeting 2,Facebook Ads,2025-03-13,2025-12-04,Product Demand,300000
+MC009,Facebook Ads - Filters 3,Facebook Ads,2025-01-14,2026-08-31,Product Demand,1200000
+MC010,Referral - PPE 1,Referral,2025-01-01,2026-01-25,Lead Generation,0
+MC011,Referral - Filters 2,Referral,2025-02-23,2026-08-31,Product Demand,0
+MC012,Email - PPE 1,Email,2025-01-01,2026-08-31,Brand,0
+MC013,Email - Cleanroom Chemicals 2,Email,2025-05-13,2026-08-31,Product Demand,0
+MC014,Direct - Cleanroom Chemicals 1,Direct,2025-01-01,2026-08-31,Product Demand,0
+MC015,Direct - Corporate 2,Direct,2025-05-21,2026-08-31,Lead Generation,0

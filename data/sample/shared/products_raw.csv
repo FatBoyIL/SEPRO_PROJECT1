@@ -1,0 +1,33 @@
+﻿product_id,sku,product_name,product_category,product_family,brand,source_country,standard_cost_vnd,list_price_vnd,shelf_life_days,criticality,base_reorder_point_qty,base_safety_stock_qty,popularity_rank
+P001,SEP-DIS-001,IPA 70%,Disinfectants,Chemical,Sepro Select,Vietnam,469000.0,588000.0,730,Medium,14,5,1
+P002,SEP-DIS-002,Hydrogen Peroxide 3%,Disinfectants,Chemical,QuantumTec,Vietnam,321000.0,423000.0,730,High,30,13,2
+P003,SEP-DIS-003,Hydrogen Peroxide 6%,Disinfectants,Chemical,Sepro Select,Vietnam,316000.0,422000.0,730,Medium,25,14,3
+P004,SEP-DIS-004,Sporicide RTU,DISINFECTANTS,Chemical,QuantumTec,Vietnam,467000.0,698000.0,730,Medium,6,6,4
+P005,SEP-DIS-005, QUAT Disinfectant  ,Disinfectants,Chemical,Sepro Select,Malaysia,461000.0,606000.0,730,High,30,10,5
+P006,SEP-DIS-006,WFI,Disinfectants,Chemical,QuantumTec,Malaysia,442000.0,575000.0,1095,Medium,6,3,6
+P007,SEP-CLE-007,Polyester Wiper 9x9,Cleanroom Wipers,Consumable,Sepro Select,Vietnam,125000.0,176000.0,730,High,20,3,7
+P008,SEP-CLE-008,Polyester Wiper 12x12,Cleanroom Wipers,Consumable,Sepro Select,Malaysia,260000.0,386000.0,730,Medium,28,3,8
+P009,SEP-CLE-009,Presaturated IPA Wiper,cleanroom wipers,Consumable,Sepro Select,Vietnam,185000.0,245000.0,1095,Medium,8,4,9
+P010,SEP-CLE-010,Low-Lint Cellulose Wiper,Cleanroom Wipers,Consumable,TexClean,Malaysia,258000.0,396000.0,365,Medium,9,2,10
+P011,SEP-CLE-011,Sterile Wiper,Cleanroom Wipers,Consumable,Sepro Select,China,211000.0,309000.0,730,Medium,15,7,11
+P012,SEP-CLE-012,Coverall Class 100,Cleanroom Garments,Garment,Sepro Garment,Vietnam,262000.0,386000.0,,Medium,16,8,12
+P013,SEP-CLE-013,Hood Class 100,Cleanroom Garments,Garment,Sepro Garment,Vietnam,252000.0,353000.0,,Low,26,7,13
+P014,SEP-CLE-014,Boot Cover Class 100,Cleanroom Garments,Garment,Sepro Garment,Vietnam,297000.0,393000.0,,High,19,2,14
+P015,SEP-CLE-015,Frock Class 1000,Cleanroom Garments,Garment,Sepro Garment,Vietnam,92000.0,132000.0,,High,15,8,15
+P016,SEP-CLE-016,Reusable Coverall,Cleanroom Garments,Garment,Sepro Garment,Vietnam,414000.0,507000.0,,Medium,27,3,16
+P017,SEP-GLO-017,Nitrile Glove 12in,Gloves & PPE,PPE,PIP,Thailand,144000.0,221000.0,730,Medium,10,8,17
+P018,SEP-GLO-018,Latex Glove 12in,Gloves & PPE,PPE,Sepro Select,Vietnam,228000.0,304000.0,180,Low,15,2,18
+P019,SEP-GLO-019,Extra Long Latex Glove,Gloves & PPE,PPE,PIP,Malaysia,212000.0,299000.0,365,Medium,23,8,19
+P020,SEP-GLO-020,Finger Cots,Gloves & PPE,PPE,PIP,Malaysia,268000.0,387000.0,365,Medium,30,3,20
+P021,SEP-GLO-021,Safety Goggles,Gloves & PPE,PPE,Sepro Select,Vietnam,96000.0,135000.0,730,Medium,27,3,21
+P022,SEP-FIL-022,Pleated Filter 20in,Filters,Filtration,Sepro Select,South Korea,1716000.0,2409000.0,,Medium,19,13,22
+P023,SEP-FIL-023,Pleated Filter 40in,Filters,Filtration,FiltraFine,South Korea,2662000.0,3747000.0,,Low,19,14,23
+P024,SEP-FIL-024,Capsule Filter 10in,Filters,Filtration,Sepro Select,Malaysia,3595000.0,4624000.0,,Medium,16,12,24
+P025,SEP-FIL-025,Capsule Filter 20in,Filters,Filtration,Sepro Select,South Korea,3664000.0,5502000.0,,Low,15,5,25
+P026,SEP-FIL-026,Vent Filter,Filters,Filtration,Sepro Select,China,3907000.0,5096000.0,,Low,14,14,26
+P027,SEP-FIL-027,Pre-filter Cartridge,Filters,Filtration,FiltraFine,South Korea,3006000.0,3812000.0,,Low,11,3,27
+P028,SEP-EQU-028,Cleanroom Mop System,Equipment & Accessories,Equipment,OmniTech,Taiwan,4144000.0,5503000.0,,Medium,18,6,28
+P029,SEP-EQU-029,Stainless Flow Cell,Equipment & Accessories,Equipment,Sepro Select,Taiwan,14327000.0,17913000.0,,Medium,23,13,29
+P030,SEP-EQU-030,Conductivity Probe,Equipment & Accessories,Equipment,Sepro Select,China,8143000.0,10144000.0,,Medium,17,14,30
+P031,SEP-EQU-031,Thermal Printer Module,Equipment & Accessories,Equipment,OmniTech,China,15782000.0,21089000.0,,High,11,13,31
+P032,SEP-EQU-032,Grease Gun,Equipment & Accessories,Equipment,Sepro Select,Germany,14984000.0,19977000.0,,Medium,9,11,32

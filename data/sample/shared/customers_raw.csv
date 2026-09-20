@@ -1,0 +1,189 @@
+﻿customer_id,company_name,tax_id,industry,province,customer_segment,company_size_band,credit_risk,default_payment_term,customer_since
+C0001,Green Asia Vietnam,TAX100000000,Food & Beverage,Ho Chi Minh City,Standard,50-249,Medium,Net 30,2020-08-20
+C0002,Scientific Advanced Vietnam,TAX100000001,Food and Beverage,Ha Noi,Strategic,1000+,Low,Net 60,2023-06-05
+C0003,Vietnam Green Vietnam,TAX100000002,Medical Device,hochiminh city,Small,10-49,High,Net 30,2022-08-08
+C0004,Vietnam Tech Vietnam,TAX100000003,Industrial Mfg,Ha Noi,Growth,250-999,Medium,Net 60,2021-12-19
+C0005,Med Asia Vietnam,TAX100000004,Industrial Manufacturing,Ho Chi Minh City,Small,10-49,High,Net 45,2024-05-27
+C0006,Lab Industrial JSC,TAX100000005,Pharmaceutical,Ho Chi Minh City,Standard,50-249,Medium,Net 30,2021-08-28
+C0007,Nova Pharma Co Ltd,TAX100000006,Medical Device,Ho Chi Minh City,Standard,50-249,Medium,Net 30,2022-11-17
+C0008,Clean Electronics Vietnam,,Pharmaceutical,Binh Duong,Standard,50-249,Medium,Net 30,2024-09-28
+C0009,Tech Tech Factory,TAX100000008,Pharmaceutical,Dong Nai,Standard,50-249,Medium,Net 30,2023-06-09
+C0010,Scientific Industrial Co Ltd,TAX100000009,Industrial Manufacturing,Ho Chi Minh City,Standard,50-249,Medium,Net 45,2022-02-19
+C0011,Asia Vietnam JSC,TAX100000010,Pharmaceutical,Ho Chi Minh City,Growth,250-999,Medium,Net 45,2023-08-06
+C0012,Industrial Solutions JSC,TAX100000011,Trading Company,Ho Chi Minh City,Standard,50-249,Medium,Net 30,2021-04-06
+C0013,Green Bio Vietnam,TAX100000012,Trading Company,BinhDuong,Strategic,1000+,Low,Net 60,2023-06-28
+C0014, Clean Health Vietnam  ,TAX100000013,Pharmaceutical,Bac Ninh,Standard,50-249,Medium,Net 30,2022-04-05
+C0015,Lab Green Co Ltd,TAX100000014,Trading,Ha Noi,Standard,50-249,Medium,Net 30,2023-05-28
+C0016,Lab Advanced Co Ltd,TAX100000015,Food & Beverage,Dong Nai,Standard,50-249,Medium,Net 30,2024-01-14
+C0017,Advanced Vietnam Co Ltd,TAX100000016,Medical Device,Dong Nai,Standard,50-249,Medium,COD,2021-11-13
+C0018,Solutions Health Vietnam,TAX100000017,Cleanroom Contractor,Ha Noi,Growth,250-999,Medium,Net 30,2020-11-22
+C0019,Scientific Med Factory,TAX100000018,Trading Company,DongNai,Growth,250-999,Medium,Net 45,2023-07-22
+C0020,Health Nova Co Ltd,TAX100000019,Industrial Manufacturing,Dong Nai,Standard,50-249,Medium,Net 30,2021-11-05
+C0021,Solutions Clean Factory,,Pharmaceutical,Ho Chi Minh,Small,10-49,High,Net 30,2023-03-27
+C0022,Bio Green Factory,TAX100000021,Electronics,HA NOI,Standard,50-249,Medium,Net 30,2020-12-13
+C0023,Bio Precision JSC,TAX100000022,Electronics,DongNai,Standard,50-249,Medium,Net 45,2023-04-09
+C0024,Green Scientific JSC,TAX100000023,Pharmaceutical,Bac Ninh,Standard,50-249,Medium,COD,2021-10-11
+C0025,Vietnam Precision Factory,TAX100000024,Medical Device,Ho Chi Minh City,Small,10-49,High,Net 30,2022-07-08
+C0026,Precision Lab JSC,TAX100000025,Trading Company,Dong Nai,Standard,50-249,Medium,Net 30,2022-09-10
+C0027,Asia Clean Vietnam,TAX100000026,Electronics,HCMC,Standard,50-249,Medium,Net 60,2024-01-03
+C0028,Med Bio JSC,TAX100000027,electronics,BINH DUONG,Small,10-49,High,COD,2023-04-21
+C0029,Precision Asia Vietnam,TAX100000028,Cleanroom Contractor,HCMC,Small,10-49,High,Net 30,2023-07-12
+C0030,Solutions Bio Vietnam,TAX100000029,Medical Device,Long An,Small,10-49,High,COD,2024-02-28
+C0031,Electronics Vietnam Vietnam,TAX100000030,Laboratory,Bac Ninh,Standard,50-249,Medium,Net 45,2022-06-19
+C0032, Bio Industrial Vietnam  ,TAX100000031,Industrial Manufacturing,Ho Chi Minh City,Standard,50-249,Medium,Net 60,2022-06-25
+C0033,Precision Clean Co Ltd,TAX100000032,Pharmaceutical,Ha Noi,Standard,50-249,Medium,Net 45,2023-01-14
+C0034,Green Lab Co Ltd,TAX100000033,Medical Device,Da Nang,Standard,50-249,Medium,Net 30,2021-02-24
+C0035,Pharma Scientific Vietnam,TAX100000034,Pharmaceutical,Ho Chi Minh City,Strategic,1000+,Low,Net 45,2024-06-20
+C0036,Scientific Advanced Vietnam,TAX100000035,Pharmaceutical,Dong Nai,Standard,50-249,Medium,Net 45,2023-11-20
+C0037,Precision Clean Factory,TAX100000036,Pharmaceutical,Dong Nai,Standard,50-249,Medium,Net 30,2022-03-30
+C0038,Solutions Manufacturing Co Ltd,TAX100000037,Medical Device,Ho Chi Minh City,Growth,250-999,Medium,Net 30,2022-07-27
+C0039,Tech Health Co Ltd,TAX100000038,Electronics,Ho Chi Minh City,Strategic,1000+,Low,Net 45,2024-09-22
+C0040,Vietnam Asia JSC,TAX100000039,Food & Beverage,Ho Chi Minh,Growth,250-999,Medium,Net 30,2022-02-03
+C0041,Solutions Industrial Factory,TAX100000040,Pharmaceutical,hochiminh city,Standard,50-249,Medium,30 days,2023-01-14
+C0042,Bio Health Co Ltd,TAX100000041,Pharmaceutical,HA NOI,Standard,50-249,Medium,Net 30,2024-01-19
+C0043,Health Med Vietnam,TAX100000042,Food & Beverage,Long An,Standard,50-249,Medium,COD,2023-03-29
+C0044, Scientific Industrial Factory  ,TAX100000043,Pharmaceutical,Binh Duong,Small,10-49,High,Net30,2020-11-06
+C0045,Manufacturing Solutions Vietnam,TAX100000044,Cleanroom contractor,Long An,Growth,250-999,Medium,Net 60,2020-09-18
+C0046,Electronics Asia Factory,TAX100000045,Food & Beverage,BacNinh,Small,10-49,High,Net 45,2023-08-29
+C0047,Advanced Nova Factory,TAX100000046,Medical Device,Ho Chi Minh City,Small,10-49,High,Net 45,2021-09-02
+C0048,Green Bio Vietnam,TAX100000047,Trading,Bac Ninh,Standard,50-249,Medium,COD,2023-10-25
+C0049,Bio Pharma Factory,TAX100000048,Industrial Manufacturing,Da Nang,Standard,50-249,Medium,NET30,2022-06-14
+C0050,Lab Tech Vietnam,TAX100000049,Cleanroom Contractor,TP.HCM,Small,10-49,High,Net 30,2020-12-19
+C0051,Solutions Bio Factory,TAX100000050,Electronics,TP.HCM,Standard,50-249,Medium,Net 60,2020-10-04
+C0052,Advanced Manufacturing Factory,TAX100000051,Pharmaceutical,Long An,Strategic,1000+,Low,Net 45,2021-07-15
+C0053,Health Lab JSC,TAX100000052,Pharmaceutical,Bac Ninh,Small,10-49,High,Net 45,2022-11-21
+C0054,Clean Scientific Factory,TAX100000053,electronics,Dong Nai,Growth,250-999,Medium,Net 30,2021-06-15
+C0055,Solutions Precision Co Ltd,TAX100000054,F&B,Ha Noi,Growth,250-999,Medium,Net 45,2021-04-13
+C0056,Med Scientific Factory,TAX100000055,Laboratory,Binh Duong,Strategic,1000+,Low,Net 30,2022-09-09
+C0057,Bio Clean Co Ltd,TAX100000056,Pharmaceutical,Binh Duong,Standard,50-249,Medium,Net 30,2024-01-21
+C0058,Vietnam Lab JSC,TAX100000057,Trading Company,Can Tho,Small,10-49,High,Net 45,2022-01-25
+C0059,Tech Tech JSC,TAX100000058,Electronics,Hanoi,Strategic,1000+,Low,Net 30,2023-06-03
+C0060,Tech Advanced Factory,TAX100000059,Pharmaceutical,Dong Nai,Strategic,1000+,Low,Net 45,2020-08-26
+C0061,Med Tech Factory,TAX100000060,Food & Beverage,Binh Duong,Growth,250-999,Medium,Net 30,2021-05-13
+C0062,Clean Pharma Co Ltd,TAX100000061,Trading Company,Ho Chi Minh City,Small,10-49,High,COD,2023-07-20
+C0063,Industrial Vietnam JSC,TAX100000062,laboratory,Binh Duong,Growth,250-999,Medium,Net 60,2023-03-15
+C0064,Scientific Green JSC,TAX100000063,Trading Company,Bac Ninh,Small,10-49,High,Net 30,2022-10-08
+C0065,Asia Clean Co Ltd,TAX100000064,Pharmaceutical,Hanoi,Standard,50-249,Medium,Net 30,2023-12-02
+C0066,Lab Green Factory,TAX100000065,Trading Company,Binh Duong,Growth,250-999,Medium,Net 60,2022-08-21
+C0067,Advanced Manufacturing Vietnam,TAX100000066,Food & Beverage,Ha Noi,Standard,50-249,Medium,Net 30,2023-10-23
+C0068,Manufacturing Advanced Vietnam,TAX100000067,Pharmaceutical,Ho Chi Minh City,Small,10-49,High,COD,2020-12-06
+C0069,Clean Clean Co Ltd,TAX100000068,Pharmaceutical,Ho Chi Minh City,Standard,50-249,Medium,Net 30,2020-08-19
+C0070,Nova Green JSC,TAX100000069,Medical Device,Binh Duong,Small,10-49,High,COD,2022-08-05
+C0071,Bio Advanced Factory,TAX100000070,Pharma,Binh Duong,Standard,50-249,Medium,Net 45,2024-03-25
+C0072,Med Vietnam Factory,TAX100000071,Electronics,Binh Duong,Small,10-49,High,COD,2024-07-24
+C0073,Med Lab Vietnam,TAX100000072,Cleanroom Contractor,Dong Nai,Standard,50-249,Medium,Net 45,2023-09-04
+C0074,Green Asia Co Ltd,TAX100000073,Medical Device,Long An,Small,10-49,High,COD,2021-09-15
+C0075,Nova Electronics Vietnam,TAX100000074,Laboratory,Dong Nai,Small,10-49,High,Net 30,2023-10-09
+C0076,Tech Advanced Vietnam,TAX100000075,Electronics,Long An,Growth,250-999,Medium,Net 45,2023-05-14
+C0077,Electronics Electronics Co Ltd,TAX100000076,laboratory,Da Nang,Small,10-49,High,COD,2020-10-29
+C0078,Manufacturing Pharma Vietnam,TAX100000077,Electronics,Ho Chi Minh City,Growth,250-999,Medium,Net 30,2023-06-14
+C0079,Manufacturing Lab Factory,TAX100000078,Pharmaceutical,Long An,Standard,50-249,Medium,Net 45,2020-12-05
+C0080,Industrial Med Factory,TAX100000079,Medical Device,Binh Duong,Strategic,1000+,Low,Net 60,2022-05-30
+C0081,Bio Precision Co Ltd,TAX100000080,Electronics,BINH DUONG,Growth,250-999,Medium,Net 60,2022-03-06
+C0082,Health Tech Vietnam,TAX100000081,Electronics,Ha Noi,Strategic,1000+,Low,Net 60,2023-01-05
+C0083,Nova Health JSC,TAX100000082,Medical Device,Dong Nai,Growth,250-999,Medium,Net 60,2021-08-12
+C0084,Nova Vietnam JSC,TAX100000083,Electronics,Dong Nai,Growth,250-999,Medium,Net 45,2024-09-20
+C0085,Health Med Vietnam,TAX100000084,Electronics,Dong Nai,Strategic,1000+,Low,Net 45,2024-03-30
+C0086,Clean Vietnam JSC,TAX100000085,Medical Device,Binh Duong,Standard,50-249,Medium,Net 30,2022-03-13
+C0087,Manufacturing Lab Vietnam,TAX100000086,Trading Company,Ho Chi Minh City,Standard,50-249,Medium,Net 30,2024-06-18
+C0088,Health Scientific Vietnam,TAX100000087,Cleanroom Contractor,Ho Chi Minh City,Growth,250-999,Medium,Net 45,2024-10-21
+C0089,Med Tech Vietnam,TAX100000088,Lab,Binh Duong,Standard,50-249,Medium,Net 30,2023-04-24
+C0090,Tech Health Vietnam,TAX100000089,Industrial Manufacturing,Hai Phong,Standard,50-249,Medium,Net 30,2021-12-18
+C0091,Advanced Lab Factory,TAX100000090,Food & Beverage,Dong Nai,Strategic,1000+,Low,Net 60,2021-01-28
+C0092,Vietnam Pharma Co Ltd,TAX100000091,Electronics,Binh Duong,Strategic,1000+,Low,Net 30,2020-11-02
+C0093,Pharma Pharma JSC,TAX100000092,Trading Company,Ho Chi Minh City,Small,10-49,High,COD,2022-04-21
+C0094,Bio Manufacturing Factory,TAX100000093,Food & Beverage,Ha Noi,Small,10-49,High,Net 30,2023-04-14
+C0095,Green Nova Co Ltd,TAX100000094,Cleanroom Contractor,Binh Duong,Small,10-49,High,Net 30,2020-10-27
+C0096,Green Electronics Factory,TAX100000095,Medical Device,Dong Nai,Standard,50-249,Medium,Net 45,2022-11-27
+C0097,Vietnam Scientific Vietnam,TAX100000096,Industrial Manufacturing,Dong Nai,Strategic,1000+,Low,Net 30,2024-04-29
+C0098,Nova Asia JSC,,Pharmaceutical,TP.HCM,Growth,250-999,Medium,Net 30,2023-07-09
+C0099,Industrial Nova Vietnam,TAX100000098,Trading Company,Bac Ninh,Small,10-49,High,COD,2020-10-30
+C0100,Nova Bio JSC,TAX100000099,Cleanroom Contractor,Dong Nai,Strategic,1000+,Low,Net 60,2022-03-08
+C0101,Precision Nova JSC,TAX100000100,Pharmaceutical,Long An,Small,10-49,High,Net 30,2021-10-04
+C0102,Med Med Factory,TAX100000101,Laboratory,Ha Noi,Small,10-49,High,Net 30,2021-09-08
+C0103,Vietnam Health Vietnam,TAX100000102,Industrial Manufacturing,Dong Nai,Strategic,1000+,Low,Net 30,2024-04-07
+C0104,Green Manufacturing Co Ltd,TAX100000103,Electronics,Binh Duong,Small,10-49,High,Net 30,2023-09-04
+C0105, Nova Industrial Factory  ,TAX100000104,Electronics,Hai Phong,Standard,50-249,Medium,Net 60,2024-01-15
+C0106,Vietnam Bio JSC,TAX100000105,Pharmaceutical,Ho Chi Minh City,Standard,50-249,Medium,Net 30,2021-04-08
+C0107, Solutions Lab JSC  ,,Laboratory,Long An,Standard,50-249,Medium,Net 30,2022-11-29
+C0108,Lab Vietnam Factory,TAX100000107,Medical Device,Binh Duong,Small,10-49,High,COD,2024-09-16
+C0109,Advanced Industrial JSC,TAX100000108,Medical Device,Long An,Standard,50-249,Medium,Net 30,2023-07-04
+C0110,Green Industrial Co Ltd,TAX100000109,Pharmaceutical,Binh Duong,Strategic,1000+,Low,Net 45,2024-06-15
+C0111,Solutions Precision Vietnam,TAX100000110,Industrial Mfg,Bac Ninh,Growth,250-999,Medium,Net 30,2022-03-20
+C0112,Lab Lab JSC,TAX100000111,Cleanroom Contractor,Can Tho,Growth,250-999,Medium,Net 30,2021-07-08
+C0113,Vietnam Asia JSC,TAX100000112,Pharmaceutical,Dong Nai,Standard,50-249,Medium,Net 45,2024-06-11
+C0114,Health Med JSC,TAX100000113,Pharmaceutical,Ho Chi Minh City,Small,10-49,High,Net 30,2023-03-15
+C0115,Health Pharma JSC,TAX100000114,Manufacturing,Binh Duong,Growth,250-999,Medium,Net 45,2021-12-01
+C0116,Green Bio Co Ltd,TAX100000115,Trading Company,Ho Chi Minh City,Small,10-49,High,Net 30,2022-03-12
+C0117,Electronics Manufacturing JSC,TAX100000116,Electronics,Bac Ninh,Standard,50-249,Medium,Net 45,2022-10-20
+C0118,Lab Bio Vietnam,TAX100000117,Pharmaceutical,Ho Chi Minh City,Standard,50-249,Medium,Net 60,2024-09-01
+C0119,Lab Electronics Vietnam,TAX100000118,Food and Beverage,Ho Chi Minh,Standard,50-249,Medium,Net 30,2023-10-18
+C0120,Industrial Bio Co Ltd,TAX100000119,Food & Beverage,TP.HCM,Standard,50-249,Medium,Net 45,2024-08-31
+C0121,Scientific Precision Vietnam,TAX100000120,Medical Device,Dong Nai,Small,10-49,High,Net 30,2022-04-15
+C0122,Nova Electronics Factory,TAX100000121,Pharmaceutical,Dong Nai,Standard,50-249,Medium,Net 30,2021-10-29
+C0123,Asia Asia Factory,TAX100000122,Food & Beverage,Binh Duong,Strategic,1000+,Low,Net 60,2022-10-29
+C0124,Green Precision Vietnam,TAX100000123,Electronics,Ho Chi Minh City,Small,10-49,High,Net 30,2024-07-07
+C0125,Tech Asia Factory,TAX100000124,Industrial Manufacturing,Binh Duong,Small,10-49,High,Net 30,2022-01-11
+C0126,Precision Industrial Co Ltd,TAX100000125,Medical Device,Ho Chi Minh City,Growth,250-999,Medium,Net 30,2021-01-25
+C0127,Health Manufacturing Vietnam,TAX100000126,Electronics,Ha Noi,Small,10-49,High,Net 30,2021-03-27
+C0128,Nova Electronics Vietnam,TAX100000127,Industrial Manufacturing,Binh Duong,Strategic,1000+,Low,Net 30,2022-09-18
+C0129,Lab Solutions Vietnam,TAX100000128,Trading,Ho Chi Minh City,Strategic,1000+,Low,Net 60,2021-01-08
+C0130,Lab Health Vietnam,TAX100000129,Pharmaceutical,Da Nang,Standard,50-249,Medium,Net 45,2022-05-31
+C0131,Solutions Solutions Factory,TAX100000130,Pharmaceutical,Dong Nai,Standard,50-249,Medium,Net 30,2023-06-03
+C0132,Advanced Bio JSC,TAX100000131,Medical Device,Ho Chi Minh City,Standard,50-249,Medium,Net 45,2022-03-04
+C0133,Advanced Bio Co Ltd,TAX100000132,Medical Device,Da Nang,Standard,50-249,Medium,Net 45,2021-05-14
+C0134,Health Scientific Vietnam,TAX100000133,Medical Device,Ho Chi Minh City,Standard,50-249,Medium,Net 30,2021-12-28
+C0135,Precision Asia Co Ltd,TAX100000134,Pharmaceutical,Bac Ninh,Growth,250-999,Medium,Net 45,2024-03-12
+C0136,Green Solutions Co Ltd,TAX100000135,Pharma,Binh Duong,Standard,50-249,Medium,Net 60,2023-03-22
+C0137,Green Electronics JSC,TAX100000136,Pharma,Can Tho,Small,10-49,High,Net 30,2021-03-10
+C0138,Bio Advanced Vietnam,TAX100000137,Pharmaceutical,Ha Noi,Standard,50-249,Medium,30 days,2023-03-31
+C0139,Asia Scientific Vietnam,TAX100000138,laboratory,Ho Chi Minh City,Small,10-49,High,Net 45,2024-07-28
+C0140,Green Pharma Factory,TAX100000139,Electronics,HA NOI,Small,10-49,High,COD,2024-10-14
+C0141,Solutions Green Factory,TAX100000140,Medical Device,Da Nang,Growth,250-999,Medium,Net 60,2024-08-07
+C0142,Electronics Precision Factory,TAX100000141,Medical Device,Da Nang,Small,10-49,High,COD,2022-10-16
+C0143,Bio Bio JSC,TAX100000142,Medical Device,BinhDuong,Standard,50-249,Medium,Net 30,2023-02-01
+C0144,Scientific Nova Vietnam,TAX100000143,Pharmaceutical,Ho Chi Minh City,Growth,250-999,Medium,Net 30,2024-04-26
+C0145,Bio Health Vietnam,TAX100000144,Cleanroom Contractor,Dong Nai,Strategic,1000+,Low,Net 60,2022-06-18
+C0146,Nova Green Co Ltd,TAX100000145,Manufacturing,Dong Nai,Small,10-49,High,Net 30,2021-09-22
+C0147,Health Electronics Co Ltd,TAX100000146,Laboratory,Ha Noi,Growth,250-999,Medium,Net 45,2023-02-27
+C0148,Clean Green JSC,,Pharmaceutical,BinhDuong,Growth,250-999,Medium,Net 45,2022-01-13
+C0149,Lab Lab Co Ltd,TAX100000148,Food & Beverage,Can Tho,Growth,250-999,Medium,Net 45,2021-06-01
+C0150,Scientific Med JSC,TAX100000149,Food & Beverage,Can Tho,Standard,50-249,Medium,Net 60,2022-07-25
+C0151,Tech Precision Vietnam,TAX100000150,Pharmaceutical,Ho Chi Minh City,Standard,50-249,Medium,Net 60,2024-09-19
+C0152,Precision Med Vietnam,TAX100000151,Pharmaceutical,Da Nang,Strategic,1000+,Low,Net 60,2023-07-10
+C0153,Vietnam Advanced Vietnam,TAX100000152,Pharmaceutical,Binh Duong,Strategic,1000+,Low,Net 60,2020-11-16
+C0154,Health Electronics Co Ltd,TAX100000153,Electronics,Dong Nai,Standard,50-249,Medium,Net 30,2022-06-09
+C0155,Industrial Industrial Co Ltd,TAX100000154,Pharmaceutical,Dong Nai,Standard,50-249,Medium,COD,2023-08-17
+C0156,Solutions Med Factory,TAX100000155,Medical Device,Dong Nai,Small,10-49,High,Net 30,2021-12-08
+C0157,Med Solutions Vietnam,TAX100000156,Electronics,Hai Phong,Growth,250-999,Medium,Net 60,2023-05-07
+C0158,Nova Solutions Factory,TAX100000157,PHARMACEUTICAL,Ho Chi Minh City,Standard,50-249,Medium,Net 30,2021-03-31
+C0159,Asia Solutions Vietnam,TAX100000158,Manufacturing,Ho Chi Minh City,Growth,250-999,Medium,Net 60,2024-01-05
+C0160,Vietnam Vietnam Vietnam,TAX100000159,Trading Company,Ho Chi Minh City,Standard,50-249,Medium,Net 45,2023-08-08
+C0161,Asia Bio Vietnam,TAX100000160,Distributor,Da Nang,Standard,50-249,Medium,Net 30,2024-06-30
+C0162,Solutions Vietnam Factory,TAX100000161,Pharmaceutical,Binh Duong,Standard,50-249,Medium,COD,2022-09-23
+C0163,Vietnam Asia JSC,TAX100000162,Industrial Manufacturing,Dong Nai,Standard,50-249,Medium,Net 30,2022-06-03
+C0164,Industrial Nova Co Ltd,TAX100000163,Pharmaceutical,Long An,Growth,250-999,Medium,Net 30,2023-10-11
+C0165,Precision Health JSC,TAX100000164,Pharmaceutical,Bac Ninh,Small,10-49,High,Net 30,2024-10-23
+C0166,Manufacturing Med Factory,TAX100000165,Electronics,Ha Noi,Small,10-49,High,Net 30,2024-01-11
+C0167, Health Health Co Ltd  ,TAX100000166,Medical Devices,Ho Chi Minh City,Standard,50-249,Medium,COD,2022-09-19
+C0168,Solutions Pharma JSC,TAX100000167,Trading Company,Long An,Standard,50-249,Medium,Net 45,2024-01-27
+C0169,Green Precision Co Ltd,TAX100000168,Industrial Mfg,Da Nang,Standard,50-249,Medium,Net 30,2024-11-15
+C0170,Scientific Asia JSC,TAX100000169,Medical Device,Dong Nai,Small,10-49,High,COD,2022-11-21
+C0171,Manufacturing Precision Factory,TAX100000170,Trading Company,Dong Nai,Small,10-49,High,Net 30,2024-03-20
+C0172,Manufacturing Electronics JSC,TAX100000171,Manufacturing,Long An,Standard,50-249,Medium,Net 30,2024-08-27
+C0173,Industrial Electronics Factory,TAX100000172,Pharmaceutical,Ho Chi Minh City,Standard,50-249,Medium,Net 30,2023-02-10
+C0174,Asia Scientific Vietnam,TAX100000173,Food & Beverage,Dong Nai,Growth,250-999,Medium,Net 30,2022-06-04
+C0175,Solutions Bio Factory,TAX100000174,Pharmaceutical,Ho Chi Minh City,Strategic,1000+,Low,Net 45,2023-12-01
+C0176,Solutions Scientific JSC,TAX100000175,Electronics,BinhDuong,Growth,250-999,Medium,Net 60,2023-03-20
+C0177,Lab Electronics JSC,TAX100000176,Trading Company,Ha Noi,Strategic,1000+,Low,Net 30,2023-11-12
+C0178,Bio Lab Vietnam,TAX100000177,Medical Device,Ho Chi Minh City,Strategic,1000+,Low,Net 60,2024-08-05
+C0179,Scientific Manufacturing Vietnam,TAX100000178,Medical Device,Can Tho,Standard,50-249,Medium,Net 30,2020-12-04
+C0180,Industrial Nova JSC,TAX100000179,Pharmaceutical,Can Tho,Standard,50-249,Medium,Net 60,2022-03-21
+C9079,Industrial Med Factory ,TAX100000079,Medical Device,Binh Duong,Strategic,1000+,Low,Net 60,2022-05-30
+C9058,Tech Tech JSC ,TAX100000058,Electronics,Ha Noi,Strategic,1000+,Low,Net 30,2023-06-03
+C9005,Lab Industrial JSC,TAX100000005,Pharmaceutical,Ho Chi Minh City,Standard,50-249,Medium,Net 30,2021-08-28
+C9032,Precision Clean Company Ltd ,TAX100000032,Pharmaceutical,Ha Noi,Standard,50-249,Medium,Net 45,2023-01-14
+C9053,Clean Scientific Factory ,TAX100000053,Electronics,Dong Nai,Growth,250-999,Medium,Net 30,2021-06-15
+C9064,Asia Clean Company Ltd,TAX100000064,Pharma,Ha Noi,Standard,50-249,Medium,Net 30,2023-12-02
+C9052,Health Lab JSC,TAX100000052,Pharmaceutical,Bac Ninh,Small,10-49,High,Net 45,2022-11-21
+C9027,Med Bio JSC,TAX100000027,Electronics,Binh Duong,Small,10-49,High,COD,2023-04-21

@@ -1,0 +1,28 @@
+﻿# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Credentials
+.env
+.env.*
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# SQL Server local files
+*.bak
+*.mdf
+*.ldf
+
+# Temporary
+*.tmp
+*.log
+~$*
+
+# Full/private datasets
+data/raw/
+data/full/

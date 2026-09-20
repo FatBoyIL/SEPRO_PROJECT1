@@ -1,0 +1,10 @@
+﻿component,suggested_rule,max_points,rationale,caution
+Requested quotation,requested_quote_flag = 1,25,Strong explicit buying intent,Do not use future outcomes such as won order in the score.
+Budget status,Approved = 20; Under Review = 10; Unknown = 0; No Budget = -10,20,Commercial readiness,Validate score bands against later conversion instead of assuming the score is perfect.
+Purchase timeline,<=30 days = 15; 31-60 = 8; >60 = 0,15,Urgency,Use only information known near lead creation.
+Website engagement,pages_viewed_30d >= 4 = 10; otherwise 0,10,Engagement proxy,Page views alone can be noisy.
+Form completeness,>=80% = 10; 60-79% = 5; <60% = 0,10,Data quality and seriousness proxy,Do not punish missing fields that are optional by design.
+Customer segment,Strategic/Growth = 10; Standard = 5; Small = 0,10,Potential account value,Avoid making score circular with realized revenue.
+Target industry,Pharmaceutical/Medical Device/Electronics = 5; others = 0,5,ICP fit for the case study,"Treat as portfolio logic, not a real SEPRO policy."
+Sample request,requested_sample_flag = 1,5,Evaluation intent,Some sample requests are low intent; validate empirically.
+Score band,80-100 High; 55-79 Medium; <55 Low,,Suggested transparent rules for practice,Compare conversion and revenue per lead by score band.

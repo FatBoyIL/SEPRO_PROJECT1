@@ -8,6 +8,12 @@ The upstream Silver Layer is maintained separately in:
 
 **Silver Layer repository:** https://github.com/FatBoyIL/SEPRO_Cleaning_Data
 
+**Power bi report in processing you could seek for that in power bi folder or you could see this instead:**
+https://drive.google.com/file/d/1aKpIxk63aqfpAHCrnGY1kwh3ppN67bp5/view
+https://drive.google.com/file/d/1R_dqMuKu3B-7fE9v0dNAB5pDSZtwQdUD/view
+https://drive.google.com/file/d/1tmV3wueijgEy6ixx-4hI_4S4xl3RRAy4/view
+**This is the original reports when i'm on board with SEPRO ECO CLEAN**
+
 ## Portfolio Context
 
 This project is the commercial starting point of a three-project B2B analytics portfolio:

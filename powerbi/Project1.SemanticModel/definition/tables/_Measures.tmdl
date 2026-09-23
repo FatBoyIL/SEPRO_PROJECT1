@@ -1,0 +1,2027 @@
+table _Measures
+	lineageTag: 8c7a56fc-7ecf-44f6-b719-4b8edce852f8
+
+	measure 'P1 Total Leads' = DISTINCTCOUNT('gold mart_lead_funnel'[lead_id])
+		lineageTag: cfcd4b82-8699-4526-a82d-77991afcea2e
+
+	measure 'P1 Qualified Leads' =
+			CALCULATE(
+			        [P1 Total Leads],
+			        'gold mart_lead_funnel'[qualified_flag] = TRUE()
+			    )
+		lineageTag: 711f670b-7487-4bcc-946a-07e1e9119ea5
+
+	measure 'P1 Quoted Leads' =
+			CALCULATE(
+			        [P1 Total Leads],
+			        'gold mart_lead_funnel'[quote_flag] = TRUE()
+			    )
+		lineageTag: 25b3abe6-a209-46a8-bc33-5db93f32a900
+
+	measure 'P1 Ordered Leads' =
+			CALCULATE(
+			        [P1 Total Leads],
+			        'gold mart_lead_funnel'[order_flag] = TRUE()
+			    )
+		lineageTag: 54e9ea96-8e27-44f1-88a8-4bed269f427e
+
+	measure 'P1 Qualified Lead Rate' =
+			DIVIDE(
+			        [P1 Qualified Leads],
+			        [P1 Total Leads]
+			    )
+		lineageTag: 93585c60-f189-44a6-b8b0-8a77d7950b8a
+
+	measure 'P1 Lead to Quote Rate' =
+			DIVIDE(
+			        [P1 Quoted Leads],
+			        [P1 Total Leads]
+			    )
+		lineageTag: c8566bf0-2742-4430-b22a-648d60a9186e
+
+	measure 'P1 Lead to Order Rate' =
+			DIVIDE(
+			        [P1 Ordered Leads],
+			        [P1 Total Leads]
+			    )
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 160e0465-7667-46dd-aeba-043a67b4be23
+
+	measure 'P1 Net Order Value' = SUM('gold mart_lead_funnel'[net_order_value_vnd])
+		lineageTag: 83be5a91-18dc-4fc5-88bb-de3890e043f8
+
+	measure 'P1 Order Value per Lead' =
+			DIVIDE(
+			        [P1 Net Order Value],
+			        [P1 Total Leads]
+			    )
+		lineageTag: 3b2d589d-2f66-4f21-a856-b2219e994bb9
+
+	measure 'P1 Funnel Stage Count' =
+			SWITCH(
+			        SELECTEDVALUE(p1_funnel_stage[Stage]),
+			        "Lead", [P1 Total Leads],
+			        "Qualified", [P1 Qualified Leads],
+			        "Quoted", [P1 Quoted Leads],
+			        "Ordered", [P1 Ordered Leads]
+			    )
+		lineageTag: 4f931bd7-657a-438b-9996-adcbae69069f
+
+	measure 'P1 Funnel Stage Rate' =
+			DIVIDE(
+			        [P1 Funnel Stage Count],
+			        [P1 Total Leads]
+			    )
+		lineageTag: 2c310c6e-7a35-430c-bd51-6e600fa6afd3
+
+	measure 'P1 Dropoff Count' =
+			SWITCH(
+			        SELECTEDVALUE(p1_funnel_transition[Transition]),
+			        "Lead -> Qualified",
+			            [P1 Total Leads] - [P1 Qualified Leads],
+			
+			        "Qualified -> Quote",
+			            [P1 Qualified Leads] - [P1 Quoted Leads],
+			
+			        "Quote -> Order",
+			            [P1 Quoted Leads] - [P1 Ordered Leads]
+			    )
+		lineageTag: 2428ce54-ffb3-4099-8ee7-2ebf9df08161
+
+	measure 'P1 Dropoff Rate' =
+			SWITCH(
+			        SELECTEDVALUE(p1_funnel_transition[Transition]),
+			
+			        "Lead -> Qualified",
+			            DIVIDE(
+			                [P1 Total Leads] - [P1 Qualified Leads],
+			                [P1 Total Leads]
+			            ),
+			
+			        "Qualified -> Quote",
+			            DIVIDE(
+			                [P1 Qualified Leads] - [P1 Quoted Leads],
+			                [P1 Qualified Leads]
+			            ),
+			
+			        "Quote -> Order",
+			            DIVIDE(
+			                [P1 Quoted Leads] - [P1 Ordered Leads],
+			                [P1 Quoted Leads]
+			            )
+			    )
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: e9ad13a1-1263-4745-bcaa-2815634b8396
+
+	measure 'P1 Leads with Sales Activity' =
+			CALCULATE(
+			        [P1 Total Leads],
+			        NOT ISBLANK(
+			            'gold mart_lead_funnel'[first_response_hours]
+			        )
+			    )
+		lineageTag: e704585a-a4f6-472b-8100-c8a75d8559d0
+
+	measure 'P1 No Sales Activity Leads' = [P1 Total Leads] - [P1 Leads with Sales Activity]
+		lineageTag: 9b4f6a6c-64b6-49ed-9fbc-b35cf87ceafb
+
+	measure 'P1 No Sales Activity Rate' =
+			DIVIDE(
+			        [P1 No Sales Activity Leads],
+			        [P1 Total Leads]
+			    )
+		lineageTag: cfccd8e6-73bd-4379-a26f-2abcdebc76c2
+
+	measure 'P1 Median First Response Hours' =
+			MEDIANX(
+			        FILTER(
+			            'gold mart_lead_funnel',
+			            NOT ISBLANK(
+			                'gold mart_lead_funnel'[first_response_hours]
+			            )
+			        ),
+			        'gold mart_lead_funnel'[first_response_hours]
+			    )
+		lineageTag: 86d031a9-49a3-4d66-8b9e-0fcab3f36896
+
+	measure 'P1 P25 First Response Hours' =
+			PERCENTILEX.INC(
+			        FILTER(
+			            'gold mart_lead_funnel',
+			            NOT ISBLANK(
+			                'gold mart_lead_funnel'[first_response_hours]
+			            )
+			        ),
+			        'gold mart_lead_funnel'[first_response_hours],
+			        0.25
+			    )
+		lineageTag: f47b7bee-d38c-48cb-975d-2b39dbc78181
+
+	measure 'P1 P75 First Response Hours' =
+			PERCENTILEX.INC(
+			        FILTER(
+			            'gold mart_lead_funnel',
+			            NOT ISBLANK(
+			                'gold mart_lead_funnel'[first_response_hours]
+			            )
+			        ),
+			        'gold mart_lead_funnel'[first_response_hours],
+			        0.75
+			    )
+		lineageTag: b8ac8133-6020-437a-a921-44f0413122d8
+
+	measure 'P1 P90 First Response Hours' =
+			PERCENTILEX.INC(
+			        FILTER(
+			            'gold mart_lead_funnel',
+			            NOT ISBLANK(
+			                'gold mart_lead_funnel'[first_response_hours]
+			            )
+			        ),
+			        'gold mart_lead_funnel'[first_response_hours],
+			        0.90
+			    )
+		lineageTag: e57d227e-d03e-487f-8a05-7e83f85b3e60
+
+	measure 'P1 IQR Response Hours' =
+			[P1 P75 First Response Hours] -
+			      [P1 P25 First Response Hours]
+		lineageTag: 8ec8f494-ed50-4adb-81b5-abaed3b30318
+
+	measure 'P1 Response IQR Upper Bound' =
+			[P1 P75 First Response Hours] +
+			      1.5 * [P1 IQR Response Hours]
+		lineageTag: 04511ab6-3652-4746-86e4-d7bb428531a2
+
+	measure 'P1 Response Outlier Leads' =
+			VAR UpperBound =
+			        [P1 Response IQR Upper Bound]
+			
+			    RETURN
+			        CALCULATE(
+			            [P1 Total Leads],
+			            FILTER(
+			                'gold mart_lead_funnel',
+			                NOT ISBLANK(
+			                    'gold mart_lead_funnel'[first_response_hours]
+			                )
+			                &&
+			                'gold mart_lead_funnel'[first_response_hours]
+			                    > UpperBound
+			            )
+			        )
+		lineageTag: 7676a47a-0886-4ae9-a6f1-e320445ebb8b
+
+	measure 'P1 Marketing Spend' =
+			SUM(
+			        'gold mart_channel_quality'[marketing_spend_vnd]
+			    )
+		lineageTag: 33d11317-346b-4b64-8c03-2fa3d6adb201
+
+	measure 'P1 CQ Leads' =
+			SUM(
+			        'gold mart_channel_quality'[total_leads]
+			    )
+		lineageTag: 10cb5112-c86f-4415-801b-dcefda1020f5
+
+	measure 'P1 CQ Qualified Leads' =
+			SUM(
+			        'gold mart_channel_quality'[qualified_leads]
+			    )
+		lineageTag: a674e661-efe0-4e78-adb5-3446c5ed8117
+
+	measure 'P1 CQ Quoted Leads' =
+			SUM(
+			        'gold mart_channel_quality'[quoted_leads]
+			    )
+		lineageTag: a4e2d598-08e0-4eb0-931b-edb8873f7ab0
+
+	measure 'P1 CQ Ordered Leads' =
+			SUM(
+			        'gold mart_channel_quality'[ordered_leads]
+			    )
+		lineageTag: a632218b-3b21-4439-8cb0-42dedd91b090
+
+	measure 'P1 CQ Net Order Value' =
+			SUM(
+			        'gold mart_channel_quality'[net_order_value_vnd]
+			    )
+		lineageTag: f4d3492e-eda0-4a47-b6a4-84ead1ac719e
+
+	measure 'P1 CPL' =
+			DIVIDE(
+			        [P1 Marketing Spend],
+			        [P1 CQ Leads]
+			    )
+		lineageTag: e8e2b267-064a-4dd4-94a9-093752d4a272
+
+	measure 'P1 Channel Qualified Rate' =
+			DIVIDE(
+			        [P1 CQ Qualified Leads],
+			        [P1 CQ Leads]
+			    )
+		lineageTag: a8bfc7fe-95f3-41fb-8eb9-23e7b7a70674
+
+	measure 'P1 Channel Lead to Quote Rate' =
+			DIVIDE(
+			        [P1 CQ Quoted Leads],
+			        [P1 CQ Leads]
+			    )
+		lineageTag: ec23acae-31b9-48c7-a4b0-2c8d78cc88b1
+
+	measure 'P1 Channel Lead to Order Rate' =
+			DIVIDE(
+			        [P1 CQ Ordered Leads],
+			        [P1 CQ Leads]
+			    )
+		lineageTag: d12e4d0f-10d9-48b3-a100-931990491dbb
+
+	measure 'P1 Channel Order Value per Lead' =
+			DIVIDE(
+			        [P1 CQ Net Order Value],
+			        [P1 CQ Leads]
+			    )
+		lineageTag: b8d47a72-1bf5-4339-a9b6-12f95d6cfcad
+
+	measure 'P1 Diagnostic Leads' =
+			DISTINCTCOUNT(
+			        'pbi_p1_lead_diagnostic'[lead_id]
+			    )
+		lineageTag: 6e9b1e23-2155-4fa3-a3d3-5019b978eef9
+
+	measure 'P1 Lost Diagnostic Leads' =
+			CALCULATE(
+			        [P1 Diagnostic Leads],
+			        'pbi_p1_lead_diagnostic'[funnel_outcome]
+			            <> "Converted"
+			    )
+		lineageTag: 148fbe85-e252-45bd-93c9-94ff38b971e2
+
+	measure 'P1 Qualified to Quote Rate' =
+			
+			DIVIDE(
+			    [P1 Quoted Leads],
+			    [P1 Qualified Leads]
+			)
+		lineageTag: 1bea0b71-f675-4d99-abbb-41c1ae371271
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'P1 Quote to Order Rate' =
+			
+			DIVIDE(
+			    [P1 Ordered Leads],
+			    [P1 Quoted Leads]
+			)
+		lineageTag: 2639cfc1-3169-476a-af49-3d96865dd8ed
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'P1 HTML KPI Strip' =
+			
+			VAR vTotalLeads =
+			    COALESCE ( [P1 Total Leads], 0 )
+			
+			VAR vQualifiedLeads =
+			    COALESCE ( [P1 Qualified Leads], 0 )
+			
+			VAR vQuotedLeads =
+			    COALESCE ( [P1 Quoted Leads], 0 )
+			
+			VAR vOrderedLeads =
+			    COALESCE ( [P1 Ordered Leads], 0 )
+			
+			VAR vQualifiedRate =
+			    COALESCE ( [P1 Qualified Lead Rate], 0 )
+			
+			VAR vQuoteRate =
+			    COALESCE ( [P1 Lead to Quote Rate], 0 )
+			
+			VAR vOrderRate =
+			    COALESCE ( [P1 Lead to Order Rate], 0 )
+			
+			VAR vOrderValue =
+			    COALESCE ( [P1 Net Order Value], 0 )
+			
+			VAR vOrderValuePerLead =
+			    COALESCE ( [P1 Order Value per Lead], 0 )
+			
+			
+			VAR vTotalLeadsText =
+			    FORMAT ( vTotalLeads, "#,0" )
+			
+			VAR vQualifiedLeadsText =
+			    FORMAT ( vQualifiedLeads, "#,0" )
+			
+			VAR vQuotedLeadsText =
+			    FORMAT ( vQuotedLeads, "#,0" )
+			
+			VAR vOrderedLeadsText =
+			    FORMAT ( vOrderedLeads, "#,0" )
+			
+			VAR vQualifiedRateText =
+			    FORMAT ( vQualifiedRate, "0.0%" )
+			
+			VAR vQuoteRateText =
+			    FORMAT ( vQuoteRate, "0.0%" )
+			
+			VAR vOrderRateText =
+			    FORMAT ( vOrderRate, "0.0%" )
+			
+			
+			VAR vOrderValueText =
+			    SWITCH (
+			        TRUE (),
+			        ABS ( vOrderValue ) >= 1000000000,
+			            FORMAT ( vOrderValue / 1000000000, "0.00" ) & "B VND",
+			
+			        ABS ( vOrderValue ) >= 1000000,
+			            FORMAT ( vOrderValue / 1000000, "0.0" ) & "M VND",
+			
+			        FORMAT ( vOrderValue, "#,0" ) & " VND"
+			    )
+			
+			
+			VAR vOrderValuePerLeadText =
+			    SWITCH (
+			        TRUE (),
+			        ABS ( vOrderValuePerLead ) >= 1000000000,
+			            FORMAT ( vOrderValuePerLead / 1000000000, "0.00" ) & "B VND",
+			
+			        ABS ( vOrderValuePerLead ) >= 1000000,
+			            FORMAT ( vOrderValuePerLead / 1000000, "0.0" ) & "M VND",
+			
+			        FORMAT ( vOrderValuePerLead, "#,0" ) & " VND"
+			    )
+			
+			
+			RETURN
+			
+			"<div style='
+			    font-family:Segoe UI,Arial,sans-serif;
+			    display:flex;
+			    gap:14px;
+			    width:100%;
+			    height:100%;
+			    box-sizing:border-box;
+			'>"
+			
+			&
+			
+			"<div style='
+			    flex:1;
+			    background:linear-gradient(135deg,#B9D8FF 0%,#E8F3FF 100%);
+			    border:1px solid #94BDF0;
+			    border-radius:16px;
+			    padding:21px 23px;
+			    box-sizing:border-box;
+			'>
+			    <div style='
+			        font-size:15px;
+			        color:#29496F;
+			        font-weight:700;
+			        letter-spacing:0.2px;
+			    '>
+			        TOTAL LEADS
+			    </div>
+			
+			    <div style='
+			        font-size:41px;
+			        color:#0F2747;
+			        font-weight:750;
+			        line-height:1.15;
+			        margin-top:8px;
+			    '>"
+			        & vTotalLeadsText &
+			    "</div>
+			
+			    <div style='
+			        font-size:15px;
+			        color:#075BBE;
+			        font-weight:700;
+			        margin-top:7px;
+			    '>
+			        100% of total
+			    </div>
+			</div>"
+			
+			&
+			
+			"<div style='
+			    flex:1;
+			    background:linear-gradient(135deg,#B8EBD4 0%,#E5FAF0 100%);
+			    border:1px solid #82D4B0;
+			    border-radius:16px;
+			    padding:21px 23px;
+			    box-sizing:border-box;
+			'>
+			    <div style='
+			        font-size:15px;
+			        color:#29496F;
+			        font-weight:700;
+			        letter-spacing:0.2px;
+			    '>
+			        QUALIFIED LEADS
+			    </div>
+			
+			    <div style='
+			        font-size:41px;
+			        color:#0F2747;
+			        font-weight:750;
+			        line-height:1.15;
+			        margin-top:8px;
+			    '>"
+			        & vQualifiedLeadsText &
+			    "</div>
+			
+			    <div style='
+			        font-size:15px;
+			        color:#006D4D;
+			        font-weight:700;
+			        margin-top:7px;
+			    '>"
+			        & vQualifiedRateText &
+			        " of total leads
+			    </div>
+			</div>"
+			
+			&
+			
+			"<div style='
+			    flex:1;
+			    background:linear-gradient(135deg,#F8DFA0 0%,#FFF5D9 100%);
+			    border:1px solid #E5C878;
+			    border-radius:16px;
+			    padding:21px 23px;
+			    box-sizing:border-box;
+			'>
+			    <div style='
+			        font-size:15px;
+			        color:#29496F;
+			        font-weight:700;
+			        letter-spacing:0.2px;
+			    '>
+			        QUOTED LEADS
+			    </div>
+			
+			    <div style='
+			        font-size:41px;
+			        color:#0F2747;
+			        font-weight:750;
+			        line-height:1.15;
+			        margin-top:8px;
+			    '>"
+			        & vQuotedLeadsText &
+			    "</div>
+			
+			    <div style='
+			        font-size:15px;
+			        color:#8C5D00;
+			        font-weight:700;
+			        margin-top:7px;
+			    '>"
+			        & vQuoteRateText &
+			        " of total leads
+			    </div>
+			</div>"
+			
+			&
+			
+			"<div style='
+			    flex:1;
+			    background:linear-gradient(135deg,#D4C2FF 0%,#F0E9FF 100%);
+			    border:1px solid #B49BEF;
+			    border-radius:16px;
+			    padding:21px 23px;
+			    box-sizing:border-box;
+			'>
+			    <div style='
+			        font-size:15px;
+			        color:#29496F;
+			        font-weight:700;
+			        letter-spacing:0.2px;
+			    '>
+			        ORDERED LEADS
+			    </div>
+			
+			    <div style='
+			        font-size:41px;
+			        color:#0F2747;
+			        font-weight:750;
+			        line-height:1.15;
+			        margin-top:8px;
+			    '>"
+			        & vOrderedLeadsText &
+			    "</div>
+			
+			    <div style='
+			        font-size:15px;
+			        color:#542CB6;
+			        font-weight:700;
+			        margin-top:7px;
+			    '>"
+			        & vOrderRateText &
+			        " of total leads
+			    </div>
+			</div>"
+			
+			&
+			
+			"<div style='
+			    flex:1.15;
+			    background:linear-gradient(135deg,#B9D8FF 0%,#E8F3FF 100%);
+			    border:1px solid #94BDF0;
+			    border-radius:16px;
+			    padding:21px 23px;
+			    box-sizing:border-box;
+			'>
+			    <div style='
+			        font-size:15px;
+			        color:#29496F;
+			        font-weight:700;
+			        letter-spacing:0.2px;
+			    '>
+			        TOTAL ORDER VALUE
+			    </div>
+			
+			    <div style='
+			        font-size:35px;
+			        color:#0F2747;
+			        font-weight:750;
+			        line-height:1.15;
+			        margin-top:9px;
+			    '>"
+			        & vOrderValueText &
+			    "</div>
+			
+			    <div style='
+			        font-size:14px;
+			        color:#29496F;
+			        margin-top:9px;
+			        line-height:1.3;
+			    '>
+			        Order Value / Lead:
+			        <b style='color:#0F2747;font-size:15px;'>"
+			            & vOrderValuePerLeadText &
+			        "</b>
+			    </div>
+			</div>"
+			
+			&
+			
+			"</div>"
+		lineageTag: 72b155c9-68a6-4a80-b233-eba83298cfe2
+
+	measure 'P1 HTML Conversion and Value' =
+			
+			VAR R1 = [P1 Qualified Lead Rate]
+			VAR R2 = [P1 Qualified to Quote Rate]
+			VAR R3 = [P1 Quote to Order Rate]
+			VAR R4 = [P1 Lead to Order Rate]
+			
+			VAR R1Text = FORMAT(R1, "0.0%")
+			VAR R2Text = FORMAT(R2, "0.0%")
+			VAR R3Text = FORMAT(R3, "0.0%")
+			VAR R4Text = FORMAT(R4, "0.0%")
+			
+			VAR W1 = FORMAT(MIN(1, R1) * 100, "0") & "%"
+			VAR W2 = FORMAT(MIN(1, R2) * 100, "0") & "%"
+			VAR W3 = FORMAT(MIN(1, R3) * 100, "0") & "%"
+			VAR W4 = FORMAT(MIN(1, R4) * 100, "0") & "%"
+			
+			VAR OrderValue = [P1 Net Order Value]
+			
+			VAR OrderValueText =
+			    SWITCH(
+			        TRUE(),
+			        ABS(OrderValue) >= 1000000000,
+			            FORMAT(OrderValue / 1000000000, "0.00") & "B VND",
+			        ABS(OrderValue) >= 1000000,
+			            FORMAT(OrderValue / 1000000, "0.0") & "M VND",
+			        FORMAT(OrderValue, "#,0") & " VND"
+			    )
+			
+			VAR OrderValuePerLead = [P1 Order Value per Lead]
+			
+			VAR OrderValuePerLeadText =
+			    SWITCH(
+			        TRUE(),
+			        ABS(OrderValuePerLead) >= 1000000000,
+			            FORMAT(OrderValuePerLead / 1000000000, "0.00") & "B VND",
+			        ABS(OrderValuePerLead) >= 1000000,
+			            FORMAT(OrderValuePerLead / 1000000, "0.0") & "M VND",
+			        FORMAT(OrderValuePerLead, "#,0") & " VND"
+			    )
+			
+			RETURN
+			"<div style='font-family:Segoe UI,Arial,sans-serif;display:flex;gap:22px;width:100%;height:100%;box-sizing:border-box;'>" &
+			
+			    "<div style='flex:1.60;background:#FFFFFF;border:1px solid #E4EAF1;border-radius:21px;padding:34px 36px;box-sizing:border-box;'>" &
+			
+			        "<div style='font-size:29px;font-weight:750;color:#0F2747;margin-bottom:35px;'>Key Conversion Rates</div>" &
+			
+			        "<div style='display:flex;align-items:center;gap:22px;margin:29px 0;min-height:34px;'>" &
+			            "<div style='width:245px;font-size:22px;color:#31445B;line-height:1.35;'>Lead → Qualified</div>" &
+			            "<div style='flex:1;height:24px;background:#E8EEF5;border-radius:24px;overflow:hidden;'>" &
+			                "<div style='height:100%;width:" & W1 & ";background:linear-gradient(90deg,#1677FF,#5CA4FF);border-radius:24px;'></div>" &
+			            "</div>" &
+			            "<div style='width:92px;text-align:right;font-size:25px;font-weight:750;color:#0F2747;line-height:1.35;'>" & R1Text & "</div>" &
+			        "</div>" &
+			
+			        "<div style='display:flex;align-items:center;gap:22px;margin:29px 0;min-height:34px;'>" &
+			            "<div style='width:245px;font-size:22px;color:#31445B;line-height:1.35;'>Qualified → Quoted</div>" &
+			            "<div style='flex:1;height:24px;background:#E8EEF5;border-radius:24px;overflow:hidden;'>" &
+			                "<div style='height:100%;width:" & W2 & ";background:linear-gradient(90deg,#2A86F3,#6EB2FF);border-radius:24px;'></div>" &
+			            "</div>" &
+			            "<div style='width:92px;text-align:right;font-size:25px;font-weight:750;color:#0F2747;line-height:1.35;'>" & R2Text & "</div>" &
+			        "</div>" &
+			
+			        "<div style='display:flex;align-items:center;gap:22px;margin:29px 0;min-height:34px;'>" &
+			            "<div style='width:245px;font-size:22px;color:#31445B;line-height:1.35;'>Quoted → Ordered</div>" &
+			            "<div style='flex:1;height:24px;background:#E8EEF5;border-radius:24px;overflow:hidden;'>" &
+			                "<div style='height:100%;width:" & W3 & ";background:linear-gradient(90deg,#6F43E8,#9B7BFF);border-radius:24px;'></div>" &
+			            "</div>" &
+			            "<div style='width:92px;text-align:right;font-size:25px;font-weight:750;color:#0F2747;line-height:1.35;'>" & R3Text & "</div>" &
+			        "</div>" &
+			
+			        "<div style='display:flex;align-items:center;gap:22px;margin:29px 0;min-height:34px;'>" &
+			            "<div style='width:245px;font-size:22px;color:#31445B;line-height:1.35;'>Lead → Ordered</div>" &
+			            "<div style='flex:1;height:24px;background:#E8EEF5;border-radius:24px;overflow:hidden;'>" &
+			                "<div style='height:100%;width:" & W4 & ";background:linear-gradient(90deg,#00A870,#57C8A4);border-radius:24px;'></div>" &
+			            "</div>" &
+			            "<div style='width:92px;text-align:right;font-size:25px;font-weight:750;color:#0F2747;line-height:1.35;'>" & R4Text & "</div>" &
+			        "</div>" &
+			
+			    "</div>" &
+			
+			    "<div style='flex:0.85;background:#F8FBFF;border:1px solid #E4EAF1;border-radius:18px;padding:23px 26px;box-sizing:border-box;'>" &
+			
+			        "<div style='font-size:20px;font-weight:750;color:#0F2747;margin-bottom:18px;line-height:1.3;'>Order Value Overview</div>" &
+			
+			        "<div style='background:#FFFFFF;border:1px solid #E8EDF3;border-radius:12px;padding:18px 19px;margin-bottom:16px;min-height:92px;box-sizing:border-box;'>" &
+			            "<div style='font-size:13px;color:#64748B;line-height:1.3;'>TOTAL ORDER VALUE</div>" &
+			            "<div style='font-size:30px;font-weight:750;color:#0F2747;margin-top:7px;line-height:1.25;'>" & OrderValueText & "</div>" &
+			        "</div>" &
+			
+			        "<div style='background:#FFFFFF;border:1px solid #E8EDF3;border-radius:12px;padding:18px 19px;min-height:92px;box-sizing:border-box;'>" &
+			            "<div style='font-size:13px;color:#64748B;line-height:1.3;'>ORDER VALUE PER LEAD</div>" &
+			            "<div style='font-size:30px;font-weight:750;color:#0F2747;margin-top:7px;line-height:1.25;'>" & OrderValuePerLeadText & "</div>" &
+			        "</div>" &
+			
+			        "<div style='font-size:13px;color:#7A899B;line-height:1.4;margin-top:15px;'>" &
+			            "Order Value represents Sales Order value, not invoiced revenue or collected cash." &
+			        "</div>" &
+			
+			    "</div>" &
+			
+			"</div>"
+		lineageTag: 5c7fde6f-6c5d-42d6-8d10-016cb747072b
+
+	measure 'P1 HTML Key Takeaway' =
+			
+			VAR LeadToOrder = [P1 Lead to Order Rate]
+			VAR NotOrdered = 1 - LeadToOrder
+			VAR DropLeadQualified = DIVIDE([P1 Total Leads] - [P1 Qualified Leads], [P1 Total Leads])
+			VAR DropQualifiedQuote = DIVIDE([P1 Qualified Leads] - [P1 Quoted Leads], [P1 Qualified Leads])
+			VAR DropQuoteOrder = DIVIDE([P1 Quoted Leads] - [P1 Ordered Leads], [P1 Quoted Leads])
+			VAR MaxDrop = MAX(DropLeadQualified, MAX(DropQualifiedQuote, DropQuoteOrder))
+			VAR MaxStage =
+			    SWITCH(
+			        TRUE(),
+			        MaxDrop = DropQuoteOrder, "Quoted → Ordered",
+			        MaxDrop = DropLeadQualified, "Lead → Qualified",
+			        "Qualified → Quoted"
+			    )
+			RETURN
+			"<div style='font-family:Segoe UI,Arial,sans-serif;width:100%;height:100%;box-sizing:border-box;background:linear-gradient(135deg,#F2FCF7,#F7FBFF);border:1px solid #DDEDE5;border-radius:14px;padding:18px 20px;'>" &
+			    "<div style='font-size:17px;font-weight:750;color:#0F2747;margin-bottom:10px;'>Key Takeaway</div>" &
+			    "<div style='display:flex;align-items:flex-start;gap:18px;'>" &
+			        "<div style='min-width:105px;'><div style='font-size:36px;line-height:1;font-weight:800;color:#008A62;'>" & FORMAT(LeadToOrder, "0.0%") & "</div><div style='font-size:12px;color:#50637A;margin-top:5px;'>of leads converted to orders</div></div>" &
+			        "<div style='border-left:1px solid #D5E5DD;padding-left:18px;font-size:13px;color:#31445B;line-height:1.55;'>" &
+			            "<div><b>Largest proportional leakage:</b> " & MaxStage & " (" & FORMAT(MaxDrop, "0.0%") & ").</div>" &
+			            "<div><b>Not reaching order stage:</b> " & FORMAT(NotOrdered, "0.0%") & " of total leads.</div>" &
+			            "<div style='margin-top:4px;color:#64748B;'>Page 2 will explain where and why leads are lost.</div>" &
+			        "</div>" &
+			    "</div>" &
+			"</div>"
+		lineageTag: c24c30e0-b7e6-4b96-9ce7-0a996fa9dbde
+
+	measure 'P1 HTML Page2 KPI Strip' =
+			
+			VAR vTotalLeads =
+			    [P1 Total Leads]
+			
+			VAR vQualifiedLeads =
+			    [P1 Qualified Leads]
+			
+			VAR vQuotedLeads =
+			    [P1 Quoted Leads]
+			
+			VAR vOrderedLeads =
+			    [P1 Ordered Leads]
+			
+			
+			VAR LostLeadToQualified =
+			    vTotalLeads - vQualifiedLeads
+			
+			VAR LostQualifiedToQuote =
+			    vQualifiedLeads - vQuotedLeads
+			
+			VAR LostQuoteToOrder =
+			    vQuotedLeads - vOrderedLeads
+			
+			
+			VAR DropRateLeadToQualified =
+			    DIVIDE ( LostLeadToQualified, vTotalLeads )
+			
+			VAR DropRateQualifiedToQuote =
+			    DIVIDE ( LostQualifiedToQuote, vQualifiedLeads )
+			
+			VAR DropRateQuoteToOrder =
+			    DIVIDE ( LostQuoteToOrder, vQuotedLeads )
+			
+			VAR LeadToOrderRate =
+			    [P1 Lead to Order Rate]
+			
+			
+			VAR MaxDropRate =
+			    MAX (
+			        DropRateLeadToQualified,
+			        MAX (
+			            DropRateQualifiedToQuote,
+			            DropRateQuoteToOrder
+			        )
+			    )
+			
+			
+			VAR StyleLeadToQualified =
+			    IF (
+			        DropRateLeadToQualified = MaxDropRate,
+			        "background:linear-gradient(135deg,#FFD1CB 0%,#FFF0ED 100%);border:2px solid #F46A5F;",
+			        "background:linear-gradient(135deg,#F8DFA0 0%,#FFF5D9 100%);border:1px solid #E5C878;"
+			    )
+			
+			VAR StyleQualifiedToQuote =
+			    IF (
+			        DropRateQualifiedToQuote = MaxDropRate,
+			        "background:linear-gradient(135deg,#FFD1CB 0%,#FFF0ED 100%);border:2px solid #F46A5F;",
+			        "background:linear-gradient(135deg,#F8DFA0 0%,#FFF5D9 100%);border:1px solid #E5C878;"
+			    )
+			
+			VAR StyleQuoteToOrder =
+			    IF (
+			        DropRateQuoteToOrder = MaxDropRate,
+			        "background:linear-gradient(135deg,#FFD1CB 0%,#FFF0ED 100%);border:2px solid #F46A5F;",
+			        "background:linear-gradient(135deg,#F8DFA0 0%,#FFF5D9 100%);border:1px solid #E5C878;"
+			    )
+			
+			
+			VAR BadgeLeadToQualified =
+			    IF (
+			        DropRateLeadToQualified = MaxDropRate,
+			        "<span style='font-size:11px;font-weight:700;color:#B9362F;background:#FFE3DF;border-radius:11px;padding:4px 8px;white-space:nowrap;'>HIGHEST DROP RATE</span>",
+			        ""
+			    )
+			
+			VAR BadgeQualifiedToQuote =
+			    IF (
+			        DropRateQualifiedToQuote = MaxDropRate,
+			        "<span style='font-size:11px;font-weight:700;color:#B9362F;background:#FFE3DF;border-radius:11px;padding:4px 8px;white-space:nowrap;'>HIGHEST DROP RATE</span>",
+			        ""
+			    )
+			
+			VAR BadgeQuoteToOrder =
+			    IF (
+			        DropRateQuoteToOrder = MaxDropRate,
+			        "<span style='font-size:11px;font-weight:700;color:#B9362F;background:#FFE3DF;border-radius:11px;padding:4px 8px;white-space:nowrap;'>HIGHEST DROP RATE</span>",
+			        ""
+			    )
+			
+			
+			RETURN
+			
+			"<div style='
+			    font-family:Segoe UI,Arial,sans-serif;
+			    display:flex;
+			    gap:13px;
+			    width:100%;
+			    height:100%;
+			    box-sizing:border-box;
+			'>"
+			
+			&
+			
+			"<div style='
+			    flex:1;
+			    background:linear-gradient(135deg,#B9D8FF 0%,#E8F3FF 100%);
+			    border:1px solid #94BDF0;
+			    border-radius:14px;
+			    padding:19px 21px;
+			    box-sizing:border-box;
+			'>
+			    <div style='
+			        font-size:14px;
+			        color:#29496F;
+			        font-weight:700;
+			        letter-spacing:.3px;
+			    '>
+			        TOTAL LEADS
+			    </div>
+			
+			    <div style='
+			        font-size:37px;
+			        color:#0F2747;
+			        font-weight:750;
+			        line-height:1.15;
+			        margin-top:7px;
+			    '>"
+			        & FORMAT ( vTotalLeads, "#,0" ) &
+			    "</div>
+			
+			    <div style='
+			        font-size:14px;
+			        color:#075BBE;
+			        font-weight:700;
+			        margin-top:6px;
+			    '>
+			        Starting population
+			    </div>
+			</div>"
+			
+			&
+			
+			"<div style='
+			    flex:1.15;"
+			        & StyleLeadToQualified &
+			    "border-radius:14px;
+			    padding:19px 21px;
+			    box-sizing:border-box;
+			'>
+			    <div style='
+			        display:flex;
+			        justify-content:space-between;
+			        align-items:center;
+			        gap:9px;
+			        min-height:27px;
+			    '>
+			        <div style='
+			            font-size:13px;
+			            color:#5D6877;
+			            font-weight:700;
+			            letter-spacing:.3px;
+			            line-height:1.25;
+			        '>
+			            LOST: LEAD → QUALIFIED
+			        </div>"
+			        & BadgeLeadToQualified &
+			    "</div>
+			
+			    <div style='
+			        display:flex;
+			        align-items:flex-end;
+			        gap:11px;
+			        margin-top:8px;
+			    '>
+			        <div style='
+			            font-size:37px;
+			            color:#0F2747;
+			            font-weight:750;
+			            line-height:1.15;
+			        '>"
+			            & FORMAT ( LostLeadToQualified, "#,0" ) &
+			        "</div>
+			
+			        <div style='
+			            font-size:16px;
+			            color:#C46F00;
+			            font-weight:800;
+			            padding-bottom:4px;
+			        '>"
+			            & FORMAT ( DropRateLeadToQualified, "0.0%" ) &
+			        "</div>
+			    </div>
+			
+			    <div style='
+			        font-size:14px;
+			        color:#5D6877;
+			        margin-top:6px;
+			        line-height:1.3;
+			    '>
+			        of total leads did not qualify
+			    </div>
+			</div>"
+			
+			&
+			
+			"<div style='
+			    flex:1.15;"
+			        & StyleQualifiedToQuote &
+			    "border-radius:14px;
+			    padding:19px 21px;
+			    box-sizing:border-box;
+			'>
+			    <div style='
+			        display:flex;
+			        justify-content:space-between;
+			        align-items:center;
+			        gap:9px;
+			        min-height:27px;
+			    '>
+			        <div style='
+			            font-size:13px;
+			            color:#5D6877;
+			            font-weight:700;
+			            letter-spacing:.3px;
+			            line-height:1.25;
+			        '>
+			            LOST: QUALIFIED → QUOTED
+			        </div>"
+			        & BadgeQualifiedToQuote &
+			    "</div>
+			
+			    <div style='
+			        display:flex;
+			        align-items:flex-end;
+			        gap:11px;
+			        margin-top:8px;
+			    '>
+			        <div style='
+			            font-size:37px;
+			            color:#0F2747;
+			            font-weight:750;
+			            line-height:1.15;
+			        '>"
+			            & FORMAT ( LostQualifiedToQuote, "#,0" ) &
+			        "</div>
+			
+			        <div style='
+			            font-size:16px;
+			            color:#C46F00;
+			            font-weight:800;
+			            padding-bottom:4px;
+			        '>"
+			            & FORMAT ( DropRateQualifiedToQuote, "0.0%" ) &
+			        "</div>
+			    </div>
+			
+			    <div style='
+			        font-size:14px;
+			        color:#5D6877;
+			        margin-top:6px;
+			        line-height:1.3;
+			    '>
+			        of qualified leads did not reach quote
+			    </div>
+			</div>"
+			
+			&
+			
+			"<div style='
+			    flex:1.15;"
+			        & StyleQuoteToOrder &
+			    "border-radius:14px;
+			    padding:19px 21px;
+			    box-sizing:border-box;
+			'>
+			    <div style='
+			        display:flex;
+			        justify-content:space-between;
+			        align-items:center;
+			        gap:9px;
+			        min-height:27px;
+			    '>
+			        <div style='
+			            font-size:13px;
+			            color:#5D6877;
+			            font-weight:700;
+			            letter-spacing:.3px;
+			            line-height:1.25;
+			        '>
+			            LOST: QUOTED → ORDERED
+			        </div>"
+			        & BadgeQuoteToOrder &
+			    "</div>
+			
+			    <div style='
+			        display:flex;
+			        align-items:flex-end;
+			        gap:11px;
+			        margin-top:8px;
+			    '>
+			        <div style='
+			            font-size:37px;
+			            color:#0F2747;
+			            font-weight:750;
+			            line-height:1.15;
+			        '>"
+			            & FORMAT ( LostQuoteToOrder, "#,0" ) &
+			        "</div>
+			
+			        <div style='
+			            font-size:16px;
+			            color:#B9362F;
+			            font-weight:800;
+			            padding-bottom:4px;
+			        '>"
+			            & FORMAT ( DropRateQuoteToOrder, "0.0%" ) &
+			        "</div>
+			    </div>
+			
+			    <div style='
+			        font-size:14px;
+			        color:#5D6877;
+			        margin-top:6px;
+			        line-height:1.3;
+			    '>
+			        of quoted leads did not convert to order
+			    </div>
+			</div>"
+			
+			&
+			
+			"<div style='
+			    flex:1;
+			    background:linear-gradient(135deg,#B8EBD4 0%,#E5FAF0 100%);
+			    border:1px solid #82D4B0;
+			    border-radius:14px;
+			    padding:19px 21px;
+			    box-sizing:border-box;
+			'>
+			    <div style='
+			        font-size:14px;
+			        color:#29496F;
+			        font-weight:700;
+			        letter-spacing:.3px;
+			    '>
+			        LEAD → ORDER RATE
+			    </div>
+			
+			    <div style='
+			        font-size:37px;
+			        color:#006D4D;
+			        font-weight:750;
+			        line-height:1.15;
+			        margin-top:7px;
+			    '>"
+			        & FORMAT ( LeadToOrderRate, "0.0%" ) &
+			    "</div>
+			
+			    <div style='
+			        font-size:14px;
+			        color:#006D4D;
+			        font-weight:700;
+			        margin-top:6px;
+			    '>"
+			        & FORMAT ( vOrderedLeads, "#,0" ) &
+			        " ordered leads
+			    </div>
+			</div>"
+			
+			&
+			
+			"</div>"
+		lineageTag: 62b48400-0478-4cc2-88ea-76f99fb9c573
+
+	measure 'P1 HTML Page3 KPI Strip' =
+			
+			VAR nCPLValue =
+			    [P1 CPL]
+			
+			VAR nQualifiedRate =
+			    [P1 Channel Qualified Rate]
+			
+			VAR nQuoteRate =
+			    [P1 Channel Lead to Quote Rate]
+			
+			VAR nOrderRate =
+			    [P1 Channel Lead to Order Rate]
+			
+			VAR nMedianResponse =
+			    [P1 Median First Response Hours]
+			
+			
+			VAR nCPLText =
+			    SWITCH (
+			        TRUE (),
+			        ISBLANK ( nCPLValue ),
+			            "—",
+			
+			        ABS ( nCPLValue ) >= 1000000000,
+			            FORMAT ( nCPLValue / 1000000000, "0.00" ) & "B VND",
+			
+			        ABS ( nCPLValue ) >= 1000000,
+			            FORMAT ( nCPLValue / 1000000, "0.00" ) & "M VND",
+			
+			        ABS ( nCPLValue ) >= 1000,
+			            FORMAT ( nCPLValue / 1000, "0.0" ) & "K VND",
+			
+			        FORMAT ( nCPLValue, "#,0" ) & " VND"
+			    )
+			
+			
+			VAR nQualifiedText =
+			    IF (
+			        ISBLANK ( nQualifiedRate ),
+			        "—",
+			        FORMAT ( nQualifiedRate, "0.0%" )
+			    )
+			
+			
+			VAR nQuoteText =
+			    IF (
+			        ISBLANK ( nQuoteRate ),
+			        "—",
+			        FORMAT ( nQuoteRate, "0.0%" )
+			    )
+			
+			
+			VAR nOrderText =
+			    IF (
+			        ISBLANK ( nOrderRate ),
+			        "—",
+			        FORMAT ( nOrderRate, "0.0%" )
+			    )
+			
+			
+			VAR nMedianResponseText =
+			    IF (
+			        ISBLANK ( nMedianResponse ),
+			        "—",
+			        FORMAT ( nMedianResponse, "0.0" ) & " h"
+			    )
+			
+			
+			RETURN
+			
+			"<div style='
+			    width:100%;
+			    height:100%;
+			    display:flex;
+			    gap:13px;
+			    box-sizing:border-box;
+			    font-family:Segoe UI,Arial,sans-serif;
+			'>"
+			
+			&
+			
+			"<div style='
+			    flex:1;
+			    background:linear-gradient(135deg,#EAF2FF 0%,#F8FBFF 100%);
+			    border:1px solid #C9DCFA;
+			    border-left:5px solid #7AA7E8;
+			    border-radius:13px;
+			    padding:17px 19px;
+			    box-sizing:border-box;
+			'>
+			    <div style='
+			        font-size:13px;
+			        font-weight:700;
+			        letter-spacing:.6px;
+			        color:#6685B5;
+			    '>
+			        CHANNEL QUALITY
+			    </div>
+			
+			    <div style='
+			        font-size:15px;
+			        font-weight:650;
+			        color:#50637A;
+			        margin-top:6px;
+			    '>
+			        CPL
+			    </div>
+			
+			    <div style='
+			        font-size:33px;
+			        font-weight:750;
+			        color:#243B5A;
+			        line-height:1.15;
+			        margin-top:6px;
+			    '>"
+			        & nCPLText &
+			    "</div>
+			
+			    <div style='
+			        font-size:13px;
+			        color:#7B91B0;
+			        margin-top:5px;
+			        line-height:1.3;
+			    '>
+			        Cost per Lead
+			    </div>
+			</div>"
+			
+			&
+			
+			"<div style='
+			    flex:1;
+			    background:linear-gradient(135deg,#E8FAF3 0%,#F8FFFC 100%);
+			    border:1px solid #BCE8D5;
+			    border-left:5px solid #76C7A5;
+			    border-radius:13px;
+			    padding:17px 19px;
+			    box-sizing:border-box;
+			'>
+			    <div style='
+			        font-size:13px;
+			        font-weight:700;
+			        letter-spacing:.6px;
+			        color:#5CA88A;
+			    '>
+			        CHANNEL QUALITY
+			    </div>
+			
+			    <div style='
+			        font-size:15px;
+			        font-weight:650;
+			        color:#50637A;
+			        margin-top:6px;
+			    '>
+			        Qualified Rate
+			    </div>
+			
+			    <div style='
+			        font-size:33px;
+			        font-weight:750;
+			        color:#315B4D;
+			        line-height:1.15;
+			        margin-top:6px;
+			    '>"
+			        & nQualifiedText &
+			    "</div>
+			
+			    <div style='
+			        font-size:13px;
+			        color:#74A891;
+			        margin-top:5px;
+			        line-height:1.3;
+			    '>
+			        Qualified Leads / Total Leads
+			    </div>
+			</div>"
+			
+			&
+			
+			"<div style='
+			    flex:1;
+			    background:linear-gradient(135deg,#FFF1E8 0%,#FFFBF7 100%);
+			    border:1px solid #F3D1B8;
+			    border-left:5px solid #E9A36F;
+			    border-radius:13px;
+			    padding:17px 19px;
+			    box-sizing:border-box;
+			'>
+			    <div style='
+			        font-size:13px;
+			        font-weight:700;
+			        letter-spacing:.6px;
+			        color:#C88D65;
+			    '>
+			        CHANNEL QUALITY
+			    </div>
+			
+			    <div style='
+			        font-size:15px;
+			        font-weight:650;
+			        color:#50637A;
+			        margin-top:6px;
+			    '>
+			        Lead → Quote
+			    </div>
+			
+			    <div style='
+			        font-size:33px;
+			        font-weight:750;
+			        color:#805D46;
+			        line-height:1.15;
+			        margin-top:6px;
+			    '>"
+			        & nQuoteText &
+			    "</div>
+			
+			    <div style='
+			        font-size:13px;
+			        color:#B48769;
+			        margin-top:5px;
+			        line-height:1.3;
+			    '>
+			        Quote Conversion
+			    </div>
+			</div>"
+			
+			&
+			
+			"<div style='
+			    flex:1;
+			    background:linear-gradient(135deg,#F0EDFF 0%,#FBFAFF 100%);
+			    border:1px solid #D9D0F5;
+			    border-left:5px solid #9B8AE3;
+			    border-radius:13px;
+			    padding:17px 19px;
+			    box-sizing:border-box;
+			'>
+			    <div style='
+			        font-size:13px;
+			        font-weight:700;
+			        letter-spacing:.6px;
+			        color:#8879C7;
+			    '>
+			        CHANNEL QUALITY
+			    </div>
+			
+			    <div style='
+			        font-size:15px;
+			        font-weight:650;
+			        color:#50637A;
+			        margin-top:6px;
+			    '>
+			        Lead → Order
+			    </div>
+			
+			    <div style='
+			        font-size:33px;
+			        font-weight:750;
+			        color:#554A86;
+			        line-height:1.15;
+			        margin-top:6px;
+			    '>"
+			        & nOrderText &
+			    "</div>
+			
+			    <div style='
+			        font-size:13px;
+			        color:#887DB3;
+			        margin-top:5px;
+			        line-height:1.3;
+			    '>
+			        Order Conversion
+			    </div>
+			</div>"
+			
+			&
+			
+			"<div style='
+			    flex:1;
+			    background:linear-gradient(135deg,#E8F8FA 0%,#FAFEFF 100%);
+			    border:1px solid #BFE4E8;
+			    border-left:5px solid #76C5CE;
+			    border-radius:13px;
+			    padding:17px 19px;
+			    box-sizing:border-box;
+			'>
+			    <div style='
+			        font-size:13px;
+			        font-weight:700;
+			        letter-spacing:.6px;
+			        color:#62AEB7;
+			    '>
+			        SALES RESPONSE
+			    </div>
+			
+			    <div style='
+			        font-size:15px;
+			        font-weight:650;
+			        color:#50637A;
+			        margin-top:6px;
+			        line-height:1.25;
+			    '>
+			        Median First Response
+			    </div>
+			
+			    <div style='
+			        font-size:33px;
+			        font-weight:750;
+			        color:#376C73;
+			        line-height:1.15;
+			        margin-top:6px;
+			    '>"
+			        & nMedianResponseText &
+			    "</div>
+			
+			    <div style='
+			        font-size:13px;
+			        color:#78A7AD;
+			        margin-top:5px;
+			        line-height:1.3;
+			    '>
+			        Responded Leads
+			    </div>
+			</div>"
+			
+			&
+			
+			"</div>"
+		lineageTag: 7722cd31-09be-4054-b425-4463995b6b7d
+
+	measure 'P1 HTML Page2 Key Takeaway' =
+			
+			
+			VAR LeadToQualifiedDrop =
+			    DIVIDE(
+			        [P1 Total Leads] - [P1 Qualified Leads],
+			        [P1 Total Leads]
+			    )
+			
+			VAR QualifiedToQuoteDrop =
+			    DIVIDE(
+			        [P1 Qualified Leads] - [P1 Quoted Leads],
+			        [P1 Qualified Leads]
+			    )
+			
+			VAR QuoteToOrderDrop =
+			    DIVIDE(
+			        [P1 Quoted Leads] - [P1 Ordered Leads],
+			        [P1 Quoted Leads]
+			    )
+			
+			VAR MaxDropRate =
+			    MAX(
+			        LeadToQualifiedDrop,
+			        MAX(
+			            QualifiedToQuoteDrop,
+			            QuoteToOrderDrop
+			        )
+			    )
+			
+			VAR MaxTransition =
+			    SWITCH(
+			        TRUE(),
+			        MaxDropRate = LeadToQualifiedDrop,
+			            "Lead → Qualified",
+			        MaxDropRate = QualifiedToQuoteDrop,
+			            "Qualified → Quote",
+			        "Quote → Order"
+			    )
+			
+			VAR MaxDropCount =
+			    SWITCH(
+			        TRUE(),
+			        MaxDropRate = LeadToQualifiedDrop,
+			            [P1 Total Leads] - [P1 Qualified Leads],
+			        MaxDropRate = QualifiedToQuoteDrop,
+			            [P1 Qualified Leads] - [P1 Quoted Leads],
+			        [P1 Quoted Leads] - [P1 Ordered Leads]
+			    )
+			
+			VAR LostLeadsWithReason =
+			    CALCULATE(
+			        [P1 Lost Diagnostic Leads],
+			        FILTER(
+			            'pbi_p1_lead_diagnostic',
+			            NOT ISBLANK(
+			                'pbi_p1_lead_diagnostic'[lost_reason]
+			            )
+			            &&
+			            'pbi_p1_lead_diagnostic'[lost_reason] <> ""
+			        )
+			    )
+			
+			VAR ReasonTable =
+			    FILTER(
+			        ADDCOLUMNS(
+			            VALUES(
+			                'pbi_p1_lead_diagnostic'[lost_reason]
+			            ),
+			            "__LostCount",
+			                CALCULATE(
+			                    [P1 Lost Diagnostic Leads]
+			                )
+			        ),
+			        NOT ISBLANK(
+			            'pbi_p1_lead_diagnostic'[lost_reason]
+			        )
+			        &&
+			        'pbi_p1_lead_diagnostic'[lost_reason] <> ""
+			        &&
+			        [__LostCount] > 0
+			    )
+			
+			VAR TopReasonTable =
+			    TOPN(
+			        1,
+			        ReasonTable,
+			        [__LostCount],
+			        DESC,
+			        'pbi_p1_lead_diagnostic'[lost_reason],
+			        ASC
+			    )
+			
+			VAR TopLostReason =
+			    MAXX(
+			        TopReasonTable,
+			        'pbi_p1_lead_diagnostic'[lost_reason]
+			    )
+			
+			VAR TopLostReasonCount =
+			    MAXX(
+			        TopReasonTable,
+			        [__LostCount]
+			    )
+			
+			VAR TopLostReasonShare =
+			    DIVIDE(
+			        TopLostReasonCount,
+			        LostLeadsWithReason
+			    )
+			
+			VAR ReasonText =
+			    IF(
+			        ISBLANK(TopLostReason),
+			        "No recorded lost reason is available in the current filter context.",
+			        "<b>Most frequent recorded lost reason:</b> "
+			            & TopLostReason
+			            & " — "
+			            & FORMAT(TopLostReasonCount, "#,0")
+			            & " leads ("
+			            & FORMAT(TopLostReasonShare, "0.0%")
+			            & " of lost leads with a recorded reason)."
+			    )
+			
+			RETURN
+			
+			"<div style='
+			    font-family:Segoe UI,Arial,sans-serif;
+			    width:100%;
+			    height:100%;
+			    box-sizing:border-box;
+			    background:linear-gradient(135deg,#FFF9F7,#F7FBFF);
+			    border:1px solid #E7EAF0;
+			    border-radius:14px;
+			    padding:18px 22px;
+			'>"
+			
+			&
+			
+			"<div style='
+			    font-size:17px;
+			    font-weight:750;
+			    color:#0F2747;
+			    margin-bottom:12px;
+			'>
+			    Key Takeaway
+			</div>"
+			
+			&
+			
+			"<div style='
+			    display:flex;
+			    align-items:flex-start;
+			    gap:20px;
+			'>"
+			
+			&
+			
+			"<div style='
+			    min-width:155px;
+			    padding-right:20px;
+			    border-right:1px solid #E1E7EF;
+			'>"
+			
+			&
+			
+			"<div style='
+			    font-size:11px;
+			    color:#66778A;
+			    font-weight:700;
+			    letter-spacing:.5px;
+			'>
+			    LARGEST DROP RATE
+			</div>"
+			
+			&
+			
+			"<div style='
+			    font-size:25px;
+			    font-weight:800;
+			    color:#D94B42;
+			    margin-top:7px;
+			'>
+			"
+			& MaxTransition &
+			"</div>"
+			
+			&
+			
+			"<div style='
+			    font-size:14px;
+			    font-weight:700;
+			    color:#0F2747;
+			    margin-top:3px;
+			'>
+			"
+			& FORMAT(MaxDropRate,"0.0%")
+			&
+			" · "
+			& FORMAT(MaxDropCount,"#,0")
+			& " leads lost
+			</div>"
+			
+			&
+			
+			"</div>"
+			
+			&
+			
+			"<div style='
+			    flex:1;
+			    font-size:13px;
+			    color:#31445B;
+			    line-height:1.55;
+			'>"
+			
+			&
+			
+			"<div>
+			    <b>Funnel leakage:</b>
+			    "
+			& MaxTransition
+			&
+			" has the highest proportional drop in the current filter context.
+			</div>"
+			
+			&
+			
+			"<div style='margin-top:7px;'>
+			"
+			& ReasonText &
+			"
+			</div>"
+			
+			&
+			
+			"<div style='
+			    margin-top:8px;
+			    color:#718096;
+			    font-size:11px;
+			'>
+			    Lost Reason is diagnostic context and does not establish a causal reason for lead loss.
+			</div>"
+			
+			&
+			
+			"</div>"
+			
+			&
+			
+			"</div>"
+			
+			&
+			
+			"</div>"
+		lineageTag: 98921b1f-5e7a-407a-8afe-56a36ea9d9e3
+
+	measure 'P1 HTML Page3 Key Takeaway' = ```
+			
+			
+			VAR ChannelTable =
+			    FILTER(
+			        ADDCOLUMNS(
+			            VALUES(
+			                'gold mart_channel_quality'[channel]
+			            ),
+			            "__ChannelRate",
+			                CALCULATE(
+			                    [P1 Channel Lead to Order Rate]
+			                ),
+			            "__ChannelLeads",
+			                CALCULATE(
+			                    [P1 CQ Leads]
+			                ),
+			            "__ChannelCPL",
+			                CALCULATE(
+			                    [P1 CPL]
+			                )
+			        ),
+			        NOT ISBLANK(
+			            'gold mart_channel_quality'[channel]
+			        )
+			        &&
+			        [__ChannelLeads] > 0
+			        &&
+			        NOT ISBLANK([__ChannelRate])
+			    )
+			
+			VAR HighestChannelTable =
+			    TOPN(
+			        1,
+			        ChannelTable,
+			        [__ChannelRate],
+			        DESC,
+			        [__ChannelLeads],
+			        DESC
+			    )
+			
+			VAR LowestChannelTable =
+			    TOPN(
+			        1,
+			        ChannelTable,
+			        [__ChannelRate],
+			        ASC,
+			        [__ChannelLeads],
+			        DESC
+			    )
+			
+			VAR HighChannel =
+			    MAXX(
+			        HighestChannelTable,
+			        'gold mart_channel_quality'[channel]
+			    )
+			
+			VAR HighChannelRate =
+			    MAXX(
+			        HighestChannelTable,
+			        [__ChannelRate]
+			    )
+			
+			VAR LowChannel =
+			    MAXX(
+			        LowestChannelTable,
+			        'gold mart_channel_quality'[channel]
+			    )
+			
+			VAR LowChannelRate =
+			    MAXX(
+			        LowestChannelTable,
+			        [__ChannelRate]
+			    )
+			
+			VAR ChannelSpread =
+			    HighChannelRate - LowChannelRate
+			
+			
+			VAR ResponseBucketTable =
+			    FILTER(
+			        ADDCOLUMNS(
+			            VALUES(
+			                'gold mart_lead_funnel'[response_bucket]
+			            ),
+			            "__BucketRate",
+			                CALCULATE(
+			                    [P1 Lead to Order Rate]
+			                ),
+			            "__BucketLeads",
+			                CALCULATE(
+			                    [P1 Total Leads]
+			                ),
+			            "__BucketSort",
+			                CALCULATE(
+			                    MIN(
+			                        'gold mart_lead_funnel'[P1 Response Bucket Sort]
+			                    )
+			                )
+			        ),
+			        NOT ISBLANK(
+			            'gold mart_lead_funnel'[response_bucket]
+			        )
+			        &&
+			        'gold mart_lead_funnel'[response_bucket]
+			            <> "Invalid Negative"
+			        &&
+			        'gold mart_lead_funnel'[response_bucket]
+			            <> "No Sales Activity"
+			        &&
+			        [__BucketLeads] > 0
+			        &&
+			        NOT ISBLANK([__BucketRate])
+			    )
+			
+			VAR FastestBucketTable =
+			    TOPN(
+			        1,
+			        ResponseBucketTable,
+			        [__BucketSort],
+			        ASC
+			    )
+			
+			VAR SlowestBucketTable =
+			    TOPN(
+			        1,
+			        ResponseBucketTable,
+			        [__BucketSort],
+			        DESC
+			    )
+			
+			VAR FastestBucket =
+			    MAXX(
+			        FastestBucketTable,
+			        'gold mart_lead_funnel'[response_bucket]
+			    )
+			
+			VAR FastestBucketRate =
+			    MAXX(
+			        FastestBucketTable,
+			        [__BucketRate]
+			    )
+			
+			VAR SlowestBucket =
+			    MAXX(
+			        SlowestBucketTable,
+			        'gold mart_lead_funnel'[response_bucket]
+			    )
+			
+			VAR SlowestBucketRate =
+			    MAXX(
+			        SlowestBucketTable,
+			        [__BucketRate]
+			    )
+			
+			VAR ResponseText =
+			    IF(
+			        ISBLANK(FastestBucket)
+			        || ISBLANK(SlowestBucket),
+			        "Insufficient response-time bucket data in the current filter context.",
+			        
+			        "<b>Response-time association:</b> Lead → Order varies from "
+			        & FORMAT(FastestBucketRate,"0.0%")
+			        & " in "
+			        & FastestBucket
+			        & " to "
+			        & FORMAT(SlowestBucketRate,"0.0%")
+			        & " in "
+			        & SlowestBucket
+			        & "."
+			    )
+			
+			RETURN
+			
+			"<div style='
+			    font-family:Segoe UI,Arial,sans-serif;
+			    width:100%;
+			    height:100%;
+			    box-sizing:border-box;
+			    background:linear-gradient(135deg,#F5FAFF,#F8FBFF);
+			    border:1px solid #DDE8F5;
+			    border-radius:14px;
+			    padding:18px 22px;
+			'>"
+			
+			&
+			
+			"<div style='
+			    font-size:17px;
+			    font-weight:750;
+			    color:#0F2747;
+			    margin-bottom:12px;
+			'>
+			    Key Takeaway
+			</div>"
+			
+			&
+			
+			"<div style='
+			    display:flex;
+			    align-items:flex-start;
+			    gap:20px;
+			'>"
+			
+			&
+			
+			"<div style='
+			    min-width:220px;
+			    padding-right:20px;
+			    border-right:1px solid #DDE5EF;
+			'>"
+			
+			&
+			
+			"<div style='
+			    font-size:11px;
+			    color:#66778A;
+			    font-weight:700;
+			    letter-spacing:.5px;
+			'>
+			    CHANNEL CONVERSION RANGE
+			</div>"
+			
+			&
+			
+			"<div style='
+			    font-size:25px;
+			    font-weight:800;
+			    color:#1677FF;
+			    margin-top:7px;
+			'>
+			"
+			& FORMAT(LowChannelRate,"0.0%")
+			& " — "
+			& FORMAT(HighChannelRate,"0.0%")
+			& "</div>"
+			
+			&
+			
+			"<div style='
+			    font-size:12px;
+			    color:#50637A;
+			    margin-top:4px;
+			'>
+			    Lead → Order across visible channels
+			</div>"
+			
+			&
+			
+			"</div>"
+			
+			&
+			
+			"<div style='
+			    flex:1;
+			    font-size:13px;
+			    color:#31445B;
+			    line-height:1.55;
+			'>"
+			
+			&
+			
+			"<div>
+			    <b>Channel variation:</b>
+			    "
+			& HighChannel
+			& " shows "
+			& FORMAT(HighChannelRate,"0.0%")
+			& " Lead → Order, while "
+			& LowChannel
+			& " shows "
+			& FORMAT(LowChannelRate,"0.0%")
+			& ".</div>"
+			
+			&
+			
+			"<div style='margin-top:7px;'>
+			"
+			& ResponseText &
+			"
+			</div>"
+			
+			&
+			
+			"<div style='
+			    margin-top:8px;
+			    color:#718096;
+			    font-size:11px;
+			'>
+			    CPL should be interpreted together with conversion and lead quality. Response-time patterns indicate association, not causation.
+			</div>"
+			
+			&
+			
+			"</div>"
+			
+			&
+			
+			"</div>"
+			
+			&
+			
+			"</div>"
+			```
+		lineageTag: e411db66-dec0-4f1d-bf05-0a5b54a02e0e
+
+	column Value
+		lineageTag: 130f54c3-4a03-4b83-8994-8ba3a0cfcba2
+		isNameInferred
+		sourceColumn: [Value]
+
+	partition _Measures = calculated
+		mode: import
+		source = {0}
+

@@ -1,0 +1,37 @@
+table p1_funnel_transition
+	lineageTag: eec8bf9a-6e0d-424c-8831-1b9c41b52e81
+
+	column Transition
+		lineageTag: 677c0619-48a2-448f-b6fd-b825976ad9e2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Transition]
+		sortByColumn: Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sort
+		formatString: 0
+		lineageTag: a18e5529-d721-4219-b00a-26446b1b72b6
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Sort]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition p1_funnel_transition = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "Transition", STRING,
+				    "Sort", INTEGER,
+				    {
+				        {"Lead -> Qualified", 1},
+				        {"Qualified -> Quote", 2},
+				        {"Quote -> Order", 3}
+				    }
+				)
+
+	annotation PBI_Id = 15600a340135486e8159f21eb2dc6a19
+

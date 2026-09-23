@@ -1,0 +1,151 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 303.9110280139156,
+            "y": 398.9528142495833
+          },
+          "nodeIndex": "gold dim_campaign",
+          "nodeLineageTag": "2bd43261-851a-44f3-b70e-ef7a664bfeb4",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 1449.8732218177038,
+            "y": 1061.2628195643761
+          },
+          "nodeIndex": "gold dim_customer",
+          "nodeLineageTag": "04832022-1a07-45ab-8689-fcf2488e42a6",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 624.30020575909657,
+            "y": 393.59144912116528
+          },
+          "nodeIndex": "gold dim_date",
+          "nodeLineageTag": "0a94a8d4-b559-4c3b-822a-85a5fb58aaf3",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 16.5041653542159,
+            "y": 406.59433167478983
+          },
+          "nodeIndex": "gold dim_employee",
+          "nodeLineageTag": "c5252fea-7589-4849-8d29-7bc2b95a56f9",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 1074.8451573937418,
+            "y": 634.95586529746129
+          },
+          "nodeIndex": "gold mart_channel_quality",
+          "nodeLineageTag": "49243a19-1efc-486d-a228-4e605d92815f",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 1059.9227707766422,
+            "y": 1019.4695546759215
+          },
+          "nodeIndex": "gold mart_lead_funnel",
+          "nodeLineageTag": "26ef6b45-5400-464c-b21b-3d2ae3e240e7",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 312.95167885406647,
+            "y": 0
+          },
+          "nodeIndex": "pbi_p1_lead_diagnostic",
+          "nodeLineageTag": "9185ab3d-3aa5-4f43-8bd6-32dd799788eb",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 938.77084786022283,
+            "y": 57.221137601669795
+          },
+          "nodeIndex": "p1_funnel_stage",
+          "nodeLineageTag": "dc1d283b-5387-46eb-b6ea-b3a639020aa0",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 920.36604075037087,
+            "y": 314.81909931238459
+          },
+          "nodeIndex": "p1_funnel_transition",
+          "nodeLineageTag": "eec8bf9a-6e0d-424c-8831-1b9c41b52e81",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 1268.3043389774959,
+            "y": 151.05181661663303
+          },
+          "nodeIndex": "_Measures",
+          "size": {
+            "height": 300,
+            "width": 241.90050574276052
+          },
+          "zIndex": 1
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 63.2870877232341,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

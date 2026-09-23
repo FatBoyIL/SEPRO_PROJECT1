@@ -1,0 +1,173 @@
+table 'gold mart_lead_funnel'
+	lineageTag: 26ef6b45-5400-464c-b21b-3d2ae3e240e7
+
+	column lead_id
+		dataType: string
+		lineageTag: 78434985-9ce9-447f-bca1-92546229c9d8
+		summarizeBy: none
+		sourceColumn: lead_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column campaign_key
+		dataType: int64
+		formatString: 0
+		lineageTag: d10207dd-3283-480d-b8be-26232fd3f9ea
+		summarizeBy: none
+		sourceColumn: campaign_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel
+		dataType: string
+		lineageTag: f9004d1a-d565-4b76-8197-34a169a0f146
+		summarizeBy: none
+		sourceColumn: channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_key
+		dataType: int64
+		formatString: 0
+		lineageTag: e7150e10-a983-45ee-a0e6-4b7d94c4b43d
+		summarizeBy: none
+		sourceColumn: customer_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 6f4b0cf6-ee95-45df-a45e-889573aaf080
+		summarizeBy: none
+		sourceColumn: employee_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 3f8dbd8f-b109-4aa5-9496-0113754fbea5
+		summarizeBy: none
+		sourceColumn: created_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: da0675ec-589c-4a83-aa08-db9b53267899
+		summarizeBy: none
+		sourceColumn: created_at
+
+		variation Variation
+			isDefault
+			relationship: a01e318c-04f3-4cad-91ee-841ca7a527d9
+			defaultHierarchy: LocalDateTable_b52e927e-0a8c-4f9f-9c0a-0a752989c533.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column lifecycle_status
+		dataType: string
+		lineageTag: e551e1da-515e-4dad-813f-32d57f8584f5
+		summarizeBy: none
+		sourceColumn: lifecycle_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column qualified_flag
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 03e005d3-4c6c-45e2-9665-0d5e4c4cdc98
+		summarizeBy: none
+		sourceColumn: qualified_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column quote_flag
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 516924de-aaa8-4466-8965-0798e7897b06
+		summarizeBy: none
+		sourceColumn: quote_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_flag
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 2e95a9a4-48c2-4d10-a27c-ec51506c3584
+		summarizeBy: none
+		sourceColumn: order_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_response_hours
+		dataType: double
+		lineageTag: cb398ca2-e717-4642-8b15-0b22d4119e82
+		summarizeBy: sum
+		sourceColumn: first_response_hours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column response_bucket
+		dataType: string
+		lineageTag: bc604707-e51f-42ba-929a-3068f208c46d
+		summarizeBy: none
+		sourceColumn: response_bucket
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_count
+		dataType: int64
+		formatString: 0
+		lineageTag: f94330af-afe9-4eff-8392-f577c6c5cb0c
+		summarizeBy: sum
+		sourceColumn: order_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column net_order_value_vnd
+		dataType: double
+		lineageTag: 4edf90a7-8edc-4426-8f89-1bdf77322102
+		summarizeBy: sum
+		sourceColumn: net_order_value_vnd
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'P1 Response Bucket Sort' =
+			
+			SWITCH(
+			    'gold mart_lead_funnel'[response_bucket],
+			    "Invalid Negative", 0,
+			    "< 4h", 1,
+			    "4-12h", 2,
+			    "12-24h", 3,
+			    "> 24h", 4,
+			    "No Sales Activity", 5,
+			    99
+			)
+		formatString: 0
+		lineageTag: dc4b363c-03df-4cc8-9c42-4659c4a32b58
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'gold mart_lead_funnel' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("localhost\SQLEXPRESS"),
+				    SEPRO_Master_Prod = Source{[Name="SEPRO_Master_Prod"]}[Data],
+				    gold_mart_lead_funnel = SEPRO_Master_Prod{[Schema="gold",Item="mart_lead_funnel"]}[Data]
+				in
+				    gold_mart_lead_funnel
+
+	annotation PBI_ResultType = Table
+

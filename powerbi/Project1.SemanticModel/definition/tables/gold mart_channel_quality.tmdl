@@ -1,0 +1,185 @@
+table 'gold mart_channel_quality'
+	lineageTag: 49243a19-1efc-486d-a228-4e605d92815f
+
+	column channel_quality_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 4cb5dd20-6274-4643-bf24-cd6b99f985f8
+		summarizeBy: sum
+		sourceColumn: channel_quality_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: d174c9a1-008b-451e-9082-67f6c81c1ee9
+		summarizeBy: none
+		sourceColumn: date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column campaign_key
+		dataType: int64
+		formatString: 0
+		lineageTag: e594a515-4ca5-4b5a-a2b4-a536e4ca3a21
+		summarizeBy: none
+		sourceColumn: campaign_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column analysis_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4e6e27d6-7b02-404c-b5e2-fdf69e074a2f
+		summarizeBy: none
+		sourceColumn: analysis_date
+
+		variation Variation
+			isDefault
+			relationship: 690e59fd-a0a4-4a28-925c-2e231154e1d0
+			defaultHierarchy: LocalDateTable_3bc910af-b84d-4e58-8ec5-e644221008c4.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column campaign_id
+		dataType: string
+		lineageTag: d62ef86b-3b57-4850-8aca-c32cb0c165d0
+		summarizeBy: none
+		sourceColumn: campaign_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column campaign_name
+		dataType: string
+		lineageTag: 29433279-2f16-44b7-81e8-5da8ae457ef7
+		summarizeBy: none
+		sourceColumn: campaign_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel
+		dataType: string
+		lineageTag: 6202ae78-fecd-4711-8462-b1f79012f73a
+		summarizeBy: none
+		sourceColumn: channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column marketing_spend_vnd
+		dataType: double
+		lineageTag: 3c761ad9-8a62-4d1c-b6ac-2afeffa9d8c1
+		summarizeBy: sum
+		sourceColumn: marketing_spend_vnd
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_leads
+		dataType: int64
+		formatString: 0
+		lineageTag: 802701c7-7f23-4651-bb8f-9de9900f4ade
+		summarizeBy: sum
+		sourceColumn: total_leads
+
+		annotation SummarizationSetBy = Automatic
+
+	column qualified_leads
+		dataType: int64
+		formatString: 0
+		lineageTag: 6e6fa7c7-90b0-4e8b-8dfa-8462c3400215
+		summarizeBy: sum
+		sourceColumn: qualified_leads
+
+		annotation SummarizationSetBy = Automatic
+
+	column quoted_leads
+		dataType: int64
+		formatString: 0
+		lineageTag: 877630a3-0730-47e2-b14e-f011f06d45e5
+		summarizeBy: sum
+		sourceColumn: quoted_leads
+
+		annotation SummarizationSetBy = Automatic
+
+	column ordered_leads
+		dataType: int64
+		formatString: 0
+		lineageTag: d0e59ae7-6e54-4fea-9c45-c8c2660163c2
+		summarizeBy: sum
+		sourceColumn: ordered_leads
+
+		annotation SummarizationSetBy = Automatic
+
+	column net_order_value_vnd
+		dataType: double
+		lineageTag: 70c1e22f-779a-407b-8119-3ff4d56c4514
+		summarizeBy: sum
+		sourceColumn: net_order_value_vnd
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cpl_vnd
+		dataType: double
+		lineageTag: 23170f04-d0bb-4cc1-8e08-ff1612b98a81
+		summarizeBy: sum
+		sourceColumn: cpl_vnd
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column qualified_lead_rate
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 68974359-3afc-456c-8831-7533fc2fe2b5
+		summarizeBy: sum
+		sourceColumn: qualified_lead_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column lead_to_quote_rate
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: ceb755f5-1e50-4dba-b102-66dda30a0923
+		summarizeBy: sum
+		sourceColumn: lead_to_quote_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column lead_to_order_rate
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 083292d6-a9ba-4c25-9aa6-5cf5b694bbfc
+		summarizeBy: sum
+		sourceColumn: lead_to_order_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_value_per_lead_vnd
+		dataType: double
+		lineageTag: aeeb0e74-ad19-43c3-8485-8aaca1c2edf6
+		summarizeBy: sum
+		sourceColumn: order_value_per_lead_vnd
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'gold mart_channel_quality' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("localhost\SQLEXPRESS"),
+				    SEPRO_Master_Prod = Source{[Name="SEPRO_Master_Prod"]}[Data],
+				    gold_mart_channel_quality = SEPRO_Master_Prod{[Schema="gold",Item="mart_channel_quality"]}[Data]
+				in
+				    gold_mart_channel_quality
+
+	annotation PBI_ResultType = Table
+

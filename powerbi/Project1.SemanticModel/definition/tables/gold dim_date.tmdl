@@ -1,0 +1,99 @@
+table 'gold dim_date'
+	lineageTag: 0a94a8d4-b559-4c3b-822a-85a5fb58aaf3
+	dataCategory: Time
+
+	column date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 987aae4c-e26c-49cb-96c5-1aca12a8be56
+		summarizeBy: none
+		sourceColumn: date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		isKey
+		formatString: Long Date
+		lineageTag: 1def8712-fbcb-4112-a5e9-93a92a0e83cf
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: 62ad9c96-7807-41b8-a33b-c683e42ba3e5
+		summarizeBy: sum
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter
+		dataType: int64
+		formatString: 0
+		lineageTag: 59f5d8de-eaf0-4525-bc7d-f08d380502cf
+		summarizeBy: sum
+		sourceColumn: quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		dataType: int64
+		formatString: 0
+		lineageTag: 05e14b72-c116-4fa7-ae89-9f2a8ecca1da
+		summarizeBy: sum
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_name
+		dataType: string
+		lineageTag: 2de9eccd-30ba-459b-8a82-3f2175400897
+		summarizeBy: none
+		sourceColumn: month_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column week
+		dataType: int64
+		formatString: 0
+		lineageTag: 3e31979a-ba4a-4777-84a8-1d9df298f4af
+		summarizeBy: sum
+		sourceColumn: week
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_month_end
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 601e0285-15e3-4e5d-a6a9-38080b54e76d
+		summarizeBy: none
+		sourceColumn: is_month_end
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_working_day
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 2f470546-82f0-4f49-abdb-25fa2d9ed636
+		summarizeBy: none
+		sourceColumn: is_working_day
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'gold dim_date' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("localhost\SQLEXPRESS"),
+				    SEPRO_Master_Prod = Source{[Name="SEPRO_Master_Prod"]}[Data],
+				    gold_dim_date = SEPRO_Master_Prod{[Schema="gold",Item="dim_date"]}[Data]
+				in
+				    gold_dim_date
+
+	annotation PBI_ResultType = Table
+

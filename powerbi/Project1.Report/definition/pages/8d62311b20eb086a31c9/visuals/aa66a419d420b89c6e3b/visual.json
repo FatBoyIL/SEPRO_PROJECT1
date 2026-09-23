@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "aa66a419d420b89c6e3b",
+  "position": {
+    "x": 0,
+    "y": 112.85714285714286,
+    "z": 1000,
+    "height": 184.28571428571431,
+    "width": 1920.0000000000002,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "htmlContent443BE3AD55E043BF878BED274D3A6855",
+    "query": {
+      "queryState": {
+        "content": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "P1 HTML Page2 KPI Strip"
+                }
+              },
+              "queryRef": "_Measures.P1 HTML Page2 KPI Strip",
+              "nativeQueryRef": "P1 HTML Page2 KPI Strip"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

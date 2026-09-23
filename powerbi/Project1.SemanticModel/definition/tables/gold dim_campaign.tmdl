@@ -1,0 +1,88 @@
+table 'gold dim_campaign'
+	lineageTag: 2bd43261-851a-44f3-b70e-ef7a664bfeb4
+
+	column campaign_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 8dc29161-1609-4036-977b-d864f90200fc
+		summarizeBy: none
+		sourceColumn: campaign_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column campaign_id
+		dataType: string
+		lineageTag: 65402e9c-0058-4e48-9c78-9b4ce423dcbf
+		summarizeBy: none
+		sourceColumn: campaign_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column campaign_name
+		dataType: string
+		lineageTag: 9608c8b5-44fc-41bc-91fc-41d8913efd25
+		summarizeBy: none
+		sourceColumn: campaign_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel
+		dataType: string
+		lineageTag: c400dbb0-22c2-4723-b402-3e99e8548a14
+		summarizeBy: none
+		sourceColumn: channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cb0a91c1-61e2-455f-a443-221af87aafa5
+		summarizeBy: none
+		sourceColumn: start_date
+
+		variation Variation
+			isDefault
+			relationship: c72d3d71-6f83-4008-a62d-c8a431f6b212
+			defaultHierarchy: LocalDateTable_e76fd94e-0d8b-47a3-9f4e-19009c72b739.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column end_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0300363e-5123-4ddb-98a8-4636f4f835e5
+		summarizeBy: none
+		sourceColumn: end_date
+
+		variation Variation
+			isDefault
+			relationship: 05026cd6-a8b8-4d71-a1bc-bfbde76a6aa5
+			defaultHierarchy: LocalDateTable_73f4e9bc-dfd7-4f94-a0ac-a5191b270e54.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column objective
+		dataType: string
+		lineageTag: 04a089dc-f963-484c-8b4b-a3d10f6bf3f8
+		summarizeBy: none
+		sourceColumn: objective
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'gold dim_campaign' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("localhost\SQLEXPRESS"),
+				    SEPRO_Master_Prod = Source{[Name="SEPRO_Master_Prod"]}[Data],
+				    gold_dim_campaign = SEPRO_Master_Prod{[Schema="gold",Item="dim_campaign"]}[Data]
+				in
+				    gold_dim_campaign
+
+	annotation PBI_ResultType = Table
+

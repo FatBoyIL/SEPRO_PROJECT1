@@ -1,0 +1,64 @@
+table 'gold dim_customer'
+	lineageTag: 04832022-1a07-45ab-8689-fcf2488e42a6
+
+	column customer_key
+		dataType: int64
+		formatString: 0
+		lineageTag: e12ff317-6586-434b-8824-bb0d46967080
+		summarizeBy: none
+		sourceColumn: customer_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: string
+		lineageTag: 239bfc67-4719-4d1b-99d5-a73cbc33467f
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_name
+		dataType: string
+		lineageTag: f2769319-fe91-4b52-b010-917c7e73a905
+		summarizeBy: none
+		sourceColumn: customer_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column segment
+		dataType: string
+		lineageTag: 5c69d030-86f8-4b40-9fa1-0abd091a97a5
+		summarizeBy: none
+		sourceColumn: segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column industry
+		dataType: string
+		lineageTag: 18de5454-58f6-4956-91d8-be1671dff90d
+		summarizeBy: none
+		sourceColumn: industry
+
+		annotation SummarizationSetBy = Automatic
+
+	column province
+		dataType: string
+		lineageTag: ec5dfda4-0757-463e-925d-f6836e0b7028
+		summarizeBy: none
+		sourceColumn: province
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'gold dim_customer' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("localhost\SQLEXPRESS"),
+				    SEPRO_Master_Prod = Source{[Name="SEPRO_Master_Prod"]}[Data],
+				    gold_dim_customer = SEPRO_Master_Prod{[Schema="gold",Item="dim_customer"]}[Data]
+				in
+				    gold_dim_customer
+
+	annotation PBI_ResultType = Table
+

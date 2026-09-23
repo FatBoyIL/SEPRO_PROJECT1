@@ -1,0 +1,78 @@
+relationship c72d3d71-6f83-4008-a62d-c8a431f6b212
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'gold dim_campaign'.start_date
+	toColumn: LocalDateTable_e76fd94e-0d8b-47a3-9f4e-19009c72b739.Date
+
+relationship 05026cd6-a8b8-4d71-a1bc-bfbde76a6aa5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'gold dim_campaign'.end_date
+	toColumn: LocalDateTable_73f4e9bc-dfd7-4f94-a0ac-a5191b270e54.Date
+
+relationship 80b963b6-e1e2-4f60-958c-ed9ef2e685ae
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'gold dim_employee'.hire_date
+	toColumn: LocalDateTable_2f714484-5f12-4506-a719-d49fb8588407.Date
+
+relationship f9930293-770a-4132-be76-0864ca0c9aea
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'gold dim_employee'.termination_date
+	toColumn: LocalDateTable_b9b11187-516e-4d73-8f9c-46fd1ff77ed5.Date
+
+relationship a01e318c-04f3-4cad-91ee-841ca7a527d9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'gold mart_lead_funnel'.created_at
+	toColumn: LocalDateTable_b52e927e-0a8c-4f9f-9c0a-0a752989c533.Date
+
+relationship 690e59fd-a0a4-4a28-925c-2e231154e1d0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'gold mart_channel_quality'.analysis_date
+	toColumn: LocalDateTable_3bc910af-b84d-4e58-8ec5-e644221008c4.Date
+
+relationship 67289fc6-6803-47ae-b142-3cc70b79a55a
+	fromColumn: 'gold mart_lead_funnel'.created_date_key
+	toColumn: 'gold dim_date'.date_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship 438922dd-e4a6-4228-b19b-821eb4967158
+	fromColumn: 'gold mart_lead_funnel'.campaign_key
+	toColumn: 'gold dim_campaign'.campaign_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship ad6c452b-d937-4298-a87e-092405a623c3
+	fromColumn: 'gold mart_lead_funnel'.customer_key
+	toColumn: 'gold dim_customer'.customer_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship 0c75e14f-faf7-4510-8b93-712c5f301c97
+	fromColumn: 'gold mart_lead_funnel'.employee_key
+	toColumn: 'gold dim_employee'.employee_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship 1f6e1efa-c5c6-4728-951b-7072a66edc28
+	fromColumn: 'gold mart_channel_quality'.date_key
+	toColumn: 'gold dim_date'.date_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship eac0dde7-32cd-41b8-9698-a71376cf01ff
+	fromColumn: 'gold mart_channel_quality'.campaign_key
+	toColumn: 'gold dim_campaign'.campaign_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship 21c27b16-d338-0589-1ba2-bda7eb5f6992
+	fromColumn: pbi_p1_lead_diagnostic.employee_key
+	toColumn: 'gold dim_employee'.employee_key
+
+relationship 3381d91d-1306-03b5-0a0b-7849d5403809
+	fromColumn: pbi_p1_lead_diagnostic.created_date_key
+	toColumn: 'gold dim_date'.date_key
+
+relationship 25a8b75e-b84d-e425-f419-50b5b5dedddf
+	fromColumn: pbi_p1_lead_diagnostic.campaign_key
+	toColumn: 'gold dim_campaign'.campaign_key
+

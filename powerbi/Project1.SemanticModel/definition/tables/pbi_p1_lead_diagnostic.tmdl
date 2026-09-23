@@ -1,0 +1,234 @@
+table pbi_p1_lead_diagnostic
+	lineageTag: 9185ab3d-3aa5-4f43-8bd6-32dd799788eb
+
+	column lead_id
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(50)
+		lineageTag: beec1d73-1953-43e9-ab3a-02e985f493e3
+		summarizeBy: none
+		sourceColumn: lead_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column campaign_key
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: aea819ad-41d6-420b-b74d-8acec79d4bc4
+		summarizeBy: none
+		sourceColumn: campaign_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_key
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: c5ecf217-a095-48e4-b6af-ef899a944a6e
+		summarizeBy: sum
+		sourceColumn: customer_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_key
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 556395bc-8769-488f-a9a1-010251b3fde6
+		summarizeBy: none
+		sourceColumn: employee_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_date_key
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 16a1d3e1-dd52-4a96-abdf-1b4088cf6c67
+		summarizeBy: none
+		sourceColumn: created_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_at
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: febc8cc8-f053-40cc-ac00-2e952194047a
+		summarizeBy: none
+		sourceColumn: created_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel
+		dataType: string
+		sourceProviderType: nvarchar(100)
+		lineageTag: 1c514554-f26b-4eb5-8fa5-8f31bf029a43
+		summarizeBy: none
+		sourceColumn: channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column lifecycle_status
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(50)
+		lineageTag: fbac780f-d231-4eda-85cb-9a421c27f4e0
+		summarizeBy: none
+		sourceColumn: lifecycle_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column qualified_flag
+		dataType: boolean
+		isNullable: false
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: f752206f-f8a6-45fd-95d9-1d1ccb60ce7c
+		summarizeBy: none
+		sourceColumn: qualified_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column quote_flag
+		dataType: boolean
+		isNullable: false
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 8c76e7a7-b377-4978-9d7c-29a5203583a3
+		summarizeBy: none
+		sourceColumn: quote_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_flag
+		dataType: boolean
+		isNullable: false
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 388f8ce7-cf40-49f4-bc21-b9d63c3f6f15
+		summarizeBy: none
+		sourceColumn: order_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_response_hours
+		dataType: double
+		sourceProviderType: decimal(10, 2)
+		lineageTag: bba93bcc-9dc7-4722-aecb-083763ccbda9
+		summarizeBy: sum
+		sourceColumn: first_response_hours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column response_bucket
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(50)
+		lineageTag: 712fc28e-257e-4e79-ab42-21ad30758160
+		summarizeBy: none
+		sourceColumn: response_bucket
+
+		annotation SummarizationSetBy = Automatic
+
+	column net_order_value_vnd
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(18, 2)
+		lineageTag: 2c3fd5cb-9265-468e-be2b-a672825c7cdc
+		summarizeBy: sum
+		sourceColumn: net_order_value_vnd
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column funnel_outcome
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(18)
+		lineageTag: 88502eec-655b-4bfa-83b9-d0a2358e6f33
+		summarizeBy: none
+		sourceColumn: funnel_outcome
+
+		annotation SummarizationSetBy = Automatic
+
+	column lost_reason
+		dataType: string
+		sourceProviderType: nvarchar(4000)
+		lineageTag: 9ae0be82-5f56-4804-bb2b-ae8b56c765f9
+		summarizeBy: none
+		sourceColumn: lost_reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column budget_status
+		dataType: string
+		sourceProviderType: nvarchar(4000)
+		lineageTag: 957d8852-31a7-4341-9541-585cf1e94ba2
+		summarizeBy: none
+		sourceColumn: budget_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column inquiry_type
+		dataType: string
+		sourceProviderType: nvarchar(4000)
+		lineageTag: 730b17c5-06dc-4904-801e-d07721224a79
+		summarizeBy: none
+		sourceColumn: inquiry_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_size_band
+		dataType: string
+		sourceProviderType: nvarchar(4000)
+		lineageTag: e2c2a4fc-1039-484a-a2d6-01cbc3249cb8
+		summarizeBy: none
+		sourceColumn: company_size_band
+
+		annotation SummarizationSetBy = Automatic
+
+	column purchase_timeline_days
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 4393a8c0-0077-42fb-ba30-1edd51596f65
+		summarizeBy: sum
+		sourceColumn: purchase_timeline_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_interest_id
+		dataType: string
+		sourceProviderType: nvarchar(100)
+		lineageTag: ade95823-1e0b-4e0f-b0ee-b02a7572f1d1
+		summarizeBy: none
+		sourceColumn: product_interest_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column expected_value_vnd
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: b0df8b9a-cd7f-4f88-b439-1fe265ea2b7d
+		summarizeBy: sum
+		sourceColumn: expected_value_vnd
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pbi_p1_lead_diagnostic = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database("localhost\SQLEXPRESS", "SEPRO_Master_Prod", [Query="/* ============================================================#(lf)   PROJECT 1 - POWER BI HELPER QUERY#(lf)   Query name in Power BI: pbi_p1_lead_diagnostic#(lf)   Grain: 1 row = 1 lead#(lf)   Purpose: identify WHERE the lead stopped, then explain WHY.#(lf)   ============================================================ */#(lf)SELECT#(lf)    f.lead_id,#(lf)    f.campaign_key,#(lf)    f.customer_key,#(lf)    f.employee_key,#(lf)    f.created_date_key,#(lf)    f.created_at,#(lf)    f.channel,#(lf)    f.lifecycle_status,#(lf)    f.qualified_flag,#(lf)    f.quote_flag,#(lf)    f.order_flag,#(lf)    f.first_response_hours,#(lf)    f.response_bucket,#(lf)    f.net_order_value_vnd,#(lf)    CASE#(lf)        WHEN f.qualified_flag = 0 THEN 'Lead -> Qualified'#(lf)        WHEN f.quote_flag = 0 THEN 'Qualified -> Quote'#(lf)        WHEN f.order_flag = 0 THEN 'Quote -> Order'#(lf)        ELSE 'Converted'#(lf)    END AS funnel_outcome,#(lf)    l.lost_reason,#(lf)    l.budget_status,#(lf)    l.inquiry_type,#(lf)    l.company_size_band,#(lf)    l.purchase_timeline_days,#(lf)    l.product_interest_id,#(lf)    l.expected_value_vnd#(lf)FROM gold.mart_lead_funnel AS f#(lf)LEFT JOIN silver.leads AS l#(lf)    ON l.lead_id = f.lead_id;", HierarchicalNavigation=true])
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,88 @@
+table 'gold dim_employee'
+	lineageTag: c5252fea-7589-4849-8d29-7bc2b95a56f9
+
+	column employee_key
+		dataType: int64
+		formatString: 0
+		lineageTag: e728c4b0-a23b-43ce-b5b2-8236d56ec0f4
+		summarizeBy: none
+		sourceColumn: employee_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_id
+		dataType: string
+		lineageTag: 85b89bb5-2505-44ba-b1cf-f2a699ac18b9
+		summarizeBy: none
+		sourceColumn: employee_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_name
+		dataType: string
+		lineageTag: aaca5868-cfcd-459d-90fe-2a6f866a32c6
+		summarizeBy: none
+		sourceColumn: employee_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column department_id
+		dataType: string
+		lineageTag: a59dbda5-5964-48b9-994e-c2a3efff1db3
+		summarizeBy: none
+		sourceColumn: department_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column job_title
+		dataType: string
+		lineageTag: 1d087390-2639-4480-ad9c-704b5129535a
+		summarizeBy: none
+		sourceColumn: job_title
+
+		annotation SummarizationSetBy = Automatic
+
+	column hire_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 71c7bb91-19fb-4ec3-b8b2-08289e2ee76d
+		summarizeBy: none
+		sourceColumn: hire_date
+
+		variation Variation
+			isDefault
+			relationship: 80b963b6-e1e2-4f60-958c-ed9ef2e685ae
+			defaultHierarchy: LocalDateTable_2f714484-5f12-4506-a719-d49fb8588407.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column termination_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a55d0779-654a-41c2-ba93-b8e86473b12b
+		summarizeBy: none
+		sourceColumn: termination_date
+
+		variation Variation
+			isDefault
+			relationship: f9930293-770a-4132-be76-0864ca0c9aea
+			defaultHierarchy: LocalDateTable_b9b11187-516e-4d73-8f9c-46fd1ff77ed5.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition 'gold dim_employee' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("localhost\SQLEXPRESS"),
+				    SEPRO_Master_Prod = Source{[Name="SEPRO_Master_Prod"]}[Data],
+				    gold_dim_employee = SEPRO_Master_Prod{[Schema="gold",Item="dim_employee"]}[Data]
+				in
+				    gold_dim_employee
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,318 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "40ef9996db06125a0623",
+  "position": {
+    "x": 588.57142857142856,
+    "y": 640,
+    "z": 4000,
+    "height": 440,
+    "width": 590,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pbi_p1_lead_diagnostic"
+                    }
+                  },
+                  "Property": "lead_id"
+                }
+              },
+              "queryRef": "pbi_p1_lead_diagnostic.lead_id",
+              "nativeQueryRef": "lead_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pbi_p1_lead_diagnostic"
+                    }
+                  },
+                  "Property": "channel"
+                }
+              },
+              "queryRef": "pbi_p1_lead_diagnostic.channel",
+              "nativeQueryRef": "channel"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pbi_p1_lead_diagnostic"
+                    }
+                  },
+                  "Property": "funnel_outcome"
+                }
+              },
+              "queryRef": "pbi_p1_lead_diagnostic.funnel_outcome",
+              "nativeQueryRef": "funnel_outcome"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pbi_p1_lead_diagnostic"
+                    }
+                  },
+                  "Property": "lost_reason"
+                }
+              },
+              "queryRef": "pbi_p1_lead_diagnostic.lost_reason",
+              "nativeQueryRef": "lost_reason"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pbi_p1_lead_diagnostic"
+                    }
+                  },
+                  "Property": "budget_status"
+                }
+              },
+              "queryRef": "pbi_p1_lead_diagnostic.budget_status",
+              "nativeQueryRef": "budget_status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "pbi_p1_lead_diagnostic"
+                    }
+                  },
+                  "Property": "inquiry_type"
+                }
+              },
+              "queryRef": "pbi_p1_lead_diagnostic.inquiry_type",
+              "nativeQueryRef": "inquiry_type"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "pbi_p1_lead_diagnostic"
+                        }
+                      },
+                      "Property": "purchase_timeline_days"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(pbi_p1_lead_diagnostic.purchase_timeline_days)",
+              "nativeQueryRef": "Sum of purchase_timeline_days"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "pbi_p1_lead_diagnostic"
+                        }
+                      },
+                      "Property": "expected_value_vnd"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(pbi_p1_lead_diagnostic.expected_value_vnd)",
+              "nativeQueryRef": "Sum of expected_value_vnd"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "pbi_p1_lead_diagnostic"
+                  }
+                },
+                "Property": "inquiry_type"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Cambria Math'''"
+                }
+              }
+            },
+            "backColorPrimary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            },
+            "fontColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            },
+            "backColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "urlIcon": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "pbi_p1_lead_diagnostic.lead_id"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "total": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "outlineWeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'ContrastAlternatingRows'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

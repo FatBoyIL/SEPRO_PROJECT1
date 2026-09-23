@@ -4,7 +4,7 @@
 
 This repository is the **Gold Layer** for Project 01 of my SEPRO Data Analytics Portfolio. It starts from cleaned and standardized Silver Layer tables and focuses on business modeling, KPI validation, analytical marts, diagnostic SQL, and Power BI-ready outputs.
 
-The Silver Layer (for cleanning data) that i had been transfer into this repo, you may take a look to see my vision in DATA CLEANING:
+> The Silver Layer (for cleanning data) that I had been transfer into this repo, you may take a look to see my vision in DATA CLEANING:
 
 **Silver Layer repository:** https://github.com/FatBoyIL/SEPRO_Cleaning_Data
 

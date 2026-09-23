@@ -4,19 +4,15 @@
 
 This repository is the **Gold Layer** for Project 01 of my SEPRO Data Analytics Portfolio. It starts from cleaned and standardized Silver Layer tables and focuses on business modeling, KPI validation, analytical marts, diagnostic SQL, and Power BI-ready outputs.
 
-The upstream Silver Layer is maintained separately in:
+The Silver Layer (for cleanning data) that i had been transfer into this repo, you may take a look to see my vision in DATA CLEANING:
 
 **Silver Layer repository:** https://github.com/FatBoyIL/SEPRO_Cleaning_Data
 
-**Power bi report in processing you could seek for that in power bi folder or you could see this instead:**
+**Power BI layout**
 
-https://drive.google.com/file/d/1aKpIxk63aqfpAHCrnGY1kwh3ppN67bp5/view
-
-https://drive.google.com/file/d/1R_dqMuKu3B-7fE9v0dNAB5pDSZtwQdUD/view
-
-https://drive.google.com/file/d/1tmV3wueijgEy6ixx-4hI_4S4xl3RRAy4/view
-
-**This is the original reports when i'm on board with SEPRO ECO CLEAN**
+<img width="6150" height="3525" alt="Project1_page-0001" src="https://github.com/user-attachments/assets/98922338-8531-4d4d-90ed-8c476afb9f0e" />
+<img width="6150" height="3525" alt="Project1_page-0002" src="https://github.com/user-attachments/assets/52aa319b-4898-42f8-86a3-09dfccd4b3b9" />
+<img width="6150" height="3525" alt="Project1_page-0003" src="https://github.com/user-attachments/assets/3b4c5dc8-ab71-43c6-831c-4c113076918e" />
 
 ## Portfolio Context
 

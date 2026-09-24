@@ -10,9 +10,9 @@ This repository is the **Gold Layer** for Project 01 of my SEPRO Data Analytics 
 
 **Power BI layout**
 
-<img width="6150" height="3525" alt="Project1_page-0001" src="https://github.com/user-attachments/assets/98922338-8531-4d4d-90ed-8c476afb9f0e" />
-<img width="6150" height="3525" alt="Project1_page-0002" src="https://github.com/user-attachments/assets/52aa319b-4898-42f8-86a3-09dfccd4b3b9" />
-<img width="6150" height="3525" alt="Project1_page-0003" src="https://github.com/user-attachments/assets/3b4c5dc8-ab71-43c6-831c-4c113076918e" />
+<img width="6150" height="3525" alt="Project1_page-0001" src="https://github.com/user-attachments/assets/270fd650-60bc-4394-b16b-9106c99d47bd" />
+<img width="6150" height="3525" alt="Project1_page-0002" src="https://github.com/user-attachments/assets/ef3b815f-c670-4075-ae21-2726bf9ee442" />
+<img width="6150" height="3525" alt="Project1_page-0003" src="https://github.com/user-attachments/assets/371cd473-598b-4f76-a30d-3afef438d3bd" />
 
 ## Portfolio Context
 
